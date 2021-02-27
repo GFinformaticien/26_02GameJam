@@ -10,7 +10,7 @@ var distance = 5
 var distancewait = 500
 var inAction = false
 var animation_player
-var time
+var timel
 var previoustime
 var healthPoint
 var alive
@@ -20,7 +20,7 @@ var tapped
 func _ready():
 	other = self.get_parent().get_child(1)
 	animation_player = get_node("AnimationPlayer")
-	time = 0
+	timel = 0
 	previoustime = 0
 	healthPoint = 5
 	alive = true
@@ -29,14 +29,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(alive):
-		time += delta
+		timel += delta
 		if state == "walking":
 			toward_player()
-			if(time - previoustime > 0.5):
-				previoustime = time
+			if(timel - previoustime > 0.5):
+				previoustime = timel
 		else:
-			if(time - previoustime > 0.5):
-				previoustime = time
+			if(timel - previoustime > 0.5):
+				previoustime = timel
 				match state:
 					"attack":
 						attack()
@@ -46,22 +46,21 @@ func _process(delta):
 						taunt()
 					"waiting":
 						waiting()
-				if(time>20 && !tapped):
+				if(timel>20 && !tapped):
 					tapped =true
 					takehit(4)
-				if(time>30):
+				if(timel>30):
 					takehit(1)
 			
 #	pass
 func waiting():
+	print("wait")
 	if(!inAction && !$AnimationPlayer.is_playing()):
 		if(abs(other.global_position.x-self.global_position.x) < distancewait):
 			state ="walking"
 
-var nbattack =0
 func attack():
 	if(!inAction && !$AnimationPlayer.is_playing()):
-		nbattack+= nbattack
 		inAction = true
 		if(abs(other.global_position.x-self.global_position.x) > distance):
 			state = "walking"
@@ -86,10 +85,13 @@ func toward_player():
 		state = "attack"
 		inAction = false
 	else:
+		print("move")
 		$AnimationPlayer.play("Walk")
 		if(self.global_position.x-other.global_position.x<0):
 			move = 1
-		else: move = -1
+		else:
+			self.scale.x = - 1
+			move = -1
 		self.global_position.x+=move
 		
 func taunt():

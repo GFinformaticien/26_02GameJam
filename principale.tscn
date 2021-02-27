@@ -8,18 +8,18 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="ia" parent="." instance=ExtResource( 1 )]
-position = Vector2( 200.996, 423.544 )
+position = Vector2( 400, 423.544 )
 
 [node name="blanknode2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 526.819, 375.789 )
+position = Vector2( 800, 376.259 )
 
 [node name="UFTKA" parent="." instance=ExtResource( 4 )]
 position = Vector2( 660.303, 466.978 )
-scale = Vector2( 3, 3 )
+scale = Vector2( 3.5, 3.5 )
 z_index = -1
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 22.6532, 298.264 )
+position = Vector2( 24.2406, 299.851 )
 scale = Vector2( 1, 1.02517 )
 z_index = -2
 texture = ExtResource( 3 )
