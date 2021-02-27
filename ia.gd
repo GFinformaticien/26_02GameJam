@@ -46,11 +46,6 @@ func _process(delta):
 						taunt()
 					"waiting":
 						waiting()
-				if(timel>20 && !tapped):
-					tapped =true
-					takehit(4)
-				if(timel>30):
-					takehit(1)
 			
 #	pass
 func waiting():
@@ -113,7 +108,6 @@ func randomAttack():
 		
 func cooldown(time):
 	var timer=Timer.new()
-	timer.connect("timeout", self,"actionFinished")
 	timer.set_wait_time(time)
 	add_child(timer)
 	timer.start()

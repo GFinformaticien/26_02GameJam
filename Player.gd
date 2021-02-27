@@ -55,7 +55,6 @@ func _physics_process(delta):
 			dashing =true
 			$AnimationPlayer.play("roullade")
 			var timer=Timer.new()
-			timer.connect("timeout", self,"actionFinished")
 			timer.set_wait_time(1.302)# time of animation
 			add_child(timer)
 			timer.start()
