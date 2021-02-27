@@ -117,6 +117,8 @@ func cooldown(time):
 	timer.set_wait_time(time)
 	add_child(timer)
 	timer.start()
+	yield(timer,"timeout")
+	timer.queue_free()
 
 func actionFinished():
 	randomAttack()
