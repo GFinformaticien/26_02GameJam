@@ -137,7 +137,7 @@ default_length = 8.0
 
 [node name="LegR" type="Bone2D" parent="Skeleton2D/Tronk"]
 position = Vector2( 6.15118, 1.09134 )
-rotation = 1.5708
+rotation = 2.0944
 rest = Transform2D( -4.37114e-08, 1, -1, -4.37114e-08, 6.15118, 1.09134 )
 default_length = 22.0
 
@@ -149,13 +149,13 @@ default_length = 22.0
 
 [node name="ArmL" type="Bone2D" parent="Skeleton2D/Tronk"]
 position = Vector2( 10.6157, -22.8189 )
-rotation = 1.5708
+rotation = 0.872665
 rest = Transform2D( -4.37114e-08, 1, -1, -4.37114e-08, 10.6157, -22.8189 )
 default_length = 25.0
 
 [node name="ArmR" type="Bone2D" parent="Skeleton2D/Tronk"]
 position = Vector2( -13.0963, -21.8269 )
-rotation = 1.5708
+rotation = 2.26893
 rest = Transform2D( -4.37114e-08, 1, -1, -4.37114e-08, -13.0963, -21.8269 )
 default_length = 25.0
 
