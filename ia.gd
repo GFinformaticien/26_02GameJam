@@ -54,7 +54,7 @@ func _process(delta):
 			
 #	pass
 func waiting():
-	print("wait")
+	#print("wait")
 	if(!inAction && !$AnimationPlayer.is_playing()):
 		if(abs(other.global_position.x-self.global_position.x) < distancewait):
 			state ="walking"
@@ -85,9 +85,10 @@ func toward_player():
 		state = "attack"
 		inAction = false
 	else:
-		print("move")
+		#print("move")
 		$AnimationPlayer.play("Walk")
 		if(self.global_position.x-other.global_position.x<0):
+			self.scale.x = 1
 			move = 1
 		else:
 			self.scale.x = - 1
