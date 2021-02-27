@@ -6,8 +6,8 @@ extends Node2D
 # var b = "text"
 var state = "waiting"
 var other#=preload("blanknode2D.tscn")
-var distance = 5
-var distancewait = 500
+var distance = 200
+var distancewait = 900
 var inAction = false
 var animation_player
 var timel
@@ -18,7 +18,7 @@ var tapped
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	other = self.get_parent().get_child(1)
+	other = self.get_parent().get_child(2)
 	animation_player = get_node("AnimationPlayer")
 	timel = 0
 	previoustime = 0
