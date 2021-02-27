@@ -7,7 +7,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="ia" parent="." instance=ExtResource( 1 )]
-position = Vector2( 200.996, 372.011 )
+position = Vector2( 200.996, 418.711 )
 
 [node name="blanknode2D" parent="." instance=ExtResource( 2 )]
 position = Vector2( 526.819, 375.789 )
