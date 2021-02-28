@@ -1,7 +1,6 @@
 extends Node
 
 signal health_changed(health)
-signal wesh_wesh(mdr)
 
 func _ready():
 	var health_node = null
