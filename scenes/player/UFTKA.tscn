@@ -624,6 +624,7 @@ __meta__ = {
 }
 
 [node name="Polygons2D" type="Node2D" parent="."]
+scale = Vector2( 3.1, 3.1 )
 
 [node name="LegL" type="Polygon2D" parent="Polygons2D"]
 position = Vector2( -30.8517, -44.7975 )
@@ -674,6 +675,7 @@ uv = PoolVector2Array( 56, 53.5, 72.1667, 54.1667, 74.5, 58.8333, 79, 60.6667, 7
 bones = [ NodePath("Tronk"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/Head"), PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ), NodePath("Tronk/LegR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
+scale = Vector2( 3.1, 3.1 )
 
 [node name="Tronk" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( -0.0992126, 9.12756 )
@@ -717,12 +719,14 @@ anims/foot = SubResource( 3 )
 anims/roullade = SubResource( 4 )
 
 [node name="hitbox_player" type="RigidBody2D" parent="."]
+scale = Vector2( 3.1, 3.1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_player"]
 position = Vector2( -0.26487, 2.00227 )
 shape = SubResource( 5 )
 
 [node name="hurtbox" type="RigidBody2D" parent="."]
+scale = Vector2( 3.1, 3.1 )
 
 [node name="punch_player_box" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2( 27.67, -15.065 )

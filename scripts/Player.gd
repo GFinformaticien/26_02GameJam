@@ -40,11 +40,11 @@ func _physics_process(delta):
 			realspeed = 2
 		if Input.is_action_pressed("ui_right"):
 			# Move as long as the key/button is pressed.
-			self.scale.x = 3.1
+			self.scale.x = 1
 			position.x += speed * delta * realspeed
 			$AnimationPlayer.play("Walk")
 		elif Input.is_action_pressed("ui_left"):
-			self.scale.x = - 3.1
+			self.scale.x = - 1
 			position.x -= speed * delta * realspeed
 			$AnimationPlayer.play("Walk")
 		elif Input.is_key_pressed(KEY_1):

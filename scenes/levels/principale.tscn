@@ -26,11 +26,11 @@ position = Vector2( 800, 376.259 )
 "actors",
 ] instance=ExtResource( 4 )]
 position = Vector2( 800, 466.978 )
-scale = Vector2( 3.5, 3.5 )
 
 [node name="Main camera" type="Camera2D" parent="UFTKA"]
 position = Vector2( -0.639282, -45.157 )
 scale = Vector2( 0.285714, 0.285714 )
+offset = Vector2( 0, -120 )
 current = true
 
 [node name="Background" type="Sprite" parent="."]

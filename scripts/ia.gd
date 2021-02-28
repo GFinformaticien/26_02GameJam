@@ -38,7 +38,7 @@ func _process(delta):
 		else:
 			if(timel - previoustime > 0.5):
 				previoustime = timel
-				print("ia :", state)
+				print("ia : state -", state, " inAction-", inAction, " AnimationPlayer.is_playing() -",$AnimationPlayer.is_playing()," fliping-",fliping)
 				match state:
 					"attack":
 						attack()
