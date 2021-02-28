@@ -140,10 +140,10 @@ func taunt():
 
 func randomAttack():
 	var action = randi() % 13
-	if action < 0:
+	if action < 7:
 		state = "attack"
 	else:
-		if action < 10:
+		if action < 9:
 			state = "spe"
 		else: state = "taunt"
 	
