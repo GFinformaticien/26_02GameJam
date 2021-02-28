@@ -609,13 +609,13 @@ tracks/13/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 14.6882, 30.877 )
+extents = Vector2( 46.471, 104.797 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 13.175, 11.907 )
+extents = Vector2( 60, 50.3836 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 13.742, 17.2 )
+extents = Vector2( 59.0421, 46.8147 )
 
 [node name="UFTKA" type="Node2D"]
 script = ExtResource( 2 )
@@ -719,22 +719,21 @@ anims/foot = SubResource( 3 )
 anims/roullade = SubResource( 4 )
 
 [node name="hitbox_player" type="RigidBody2D" parent="."]
-scale = Vector2( 3.1, 3.1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_player"]
 position = Vector2( -0.26487, 2.00227 )
 shape = SubResource( 5 )
 
 [node name="hurtbox" type="RigidBody2D" parent="."]
-scale = Vector2( 3.1, 3.1 )
 
 [node name="punch_player_box" type="CollisionShape2D" parent="hurtbox"]
-position = Vector2( 27.67, -15.065 )
+position = Vector2( 99.1922, -50.2965 )
 shape = SubResource( 6 )
 disabled = true
 
 [node name="foot_player_box" type="CollisionShape2D" parent="hurtbox"]
-position = Vector2( 28.869, 14.929 )
+position = Vector2( 100.023, 58.1751 )
+rotation = -0.0105748
 shape = SubResource( 7 )
 disabled = true
 
