@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/mobs/ia.tscn" type="PackedScene" id=1]
 [ext_resource path="res://blanknode2D.tscn" type="PackedScene" id=2]
@@ -7,24 +7,27 @@
 [ext_resource path="res://scripts/spawner.gd" type="Script" id=5]
 [ext_resource path="res://scenes/UI/Interface.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/mobs/Cat.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/mobs/Puggu.tscn" type="PackedScene" id=8]
 
 [node name="Scene" type="Node2D"]
 script = ExtResource( 5 )
+Mob = [ ExtResource( 7 ), ExtResource( 1 ) ]
+enabled = true
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 
 [node name="Interface" parent="InterfaceLayer" instance=ExtResource( 6 )]
 
 [node name="mob" parent="." instance=ExtResource( 1 )]
-position = Vector2( 200, 423.544 )
+position = Vector2( 249.89, 715.759 )
 
 [node name="blanknode2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 800, 376.259 )
+position = Vector2( 849.89, 668.474 )
 
 [node name="UFTKA" parent="." groups=[
 "actors",
 ] instance=ExtResource( 4 )]
-position = Vector2( 800, 466.978 )
+position = Vector2( 849.89, 759.193 )
 
 [node name="Main camera" type="Camera2D" parent="UFTKA"]
 position = Vector2( -0.639282, -45.157 )
@@ -33,13 +36,16 @@ offset = Vector2( 0, -120 )
 current = true
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 24.2406, 299.851 )
-scale = Vector2( 1, 1.02517 )
+position = Vector2( 5460.5, 444.956 )
+scale = Vector2( 2, 2 )
 z_index = -2
 texture = ExtResource( 3 )
 
 [node name="Cat" parent="." instance=ExtResource( 7 )]
-position = Vector2( 400, 400 )
+position = Vector2( 438.209, 758.214 )
+
+[node name="Puggu" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1305, 751.358 )
 [connection signal="health_changed" from="UFTKA/Health" to="InterfaceLayer/Interface" method="_on_Health_health_changed"]
 
 [editable path="UFTKA"]

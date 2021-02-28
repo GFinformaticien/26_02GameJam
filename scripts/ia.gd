@@ -6,7 +6,7 @@ extends Node2D
 # var b = "text"
 var state = "waiting"
 var other#=preload("blanknode2D.tscn")
-var distance = 200
+var distance = 150
 var distancewait = 900
 var inAction = false
 var animation_player
@@ -26,7 +26,7 @@ func _ready():
 	timel = 0
 	previoustime = 0
 	previoustimeflip = 0
-	healthPoint = 5
+	healthPoint = 6
 	alive = true
 	fliping = false
 
@@ -40,7 +40,7 @@ func _process(delta):
 		else:
 			if(timel - previoustime > 0.5):
 				previoustime = timel
-				print("ia : state -", state, " inAction-", inAction, " AnimationPlayer.is_playing() -",$AnimationPlayer.is_playing()," fliping-",fliping)
+				#print("ia : state -", state, " inAction-", inAction, " AnimationPlayer.is_playing() -",$AnimationPlayer.is_playing()," fliping-",fliping)
 				match state:
 					"attack":
 						attack()
@@ -53,9 +53,6 @@ func _process(delta):
 			if(timel - previoustimeflip > 1.5):
 				previoustimeflip = timel
 				testFlip()
-	else:
-		if(timel - previoustime > 5):
-			self.queue_free()
 #	pass
 func testFlip():
 	var scale = self.scale.x
@@ -165,18 +162,13 @@ func takehit(hitvalue):
 	else:
 		$AnimationPlayer.play("Die")
 		alive = false
-		#give more time
-		timel = 0
-		#animation finished
 		yield($AnimationPlayer, "animation_finished")
-		#set to 0 to wait 5s to depop
-		previoustime = 0
-		timel = 0
+		queue_free()
 	
 func force_action_end():
 	$AnimationPlayer.stop()
 
 
 func _on_hurtbox_body_entered(body):
-	if(body.name == "hitbox" and CAN_BE_HIT_BY.count(body.get_parent().get_name()) > 0):
+	if(body.name == "hitbox" ):
 		takehit(body.damage)

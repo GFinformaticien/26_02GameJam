@@ -24,8 +24,8 @@ func _ready():
 	timel = 0
 	previoustime = 0
 	previoustimeflip = 0
-	healthPoint = 3
-	alive = true
+	healthPoint = 100
+	alive =true
 	fliping = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,7 +39,6 @@ func _process(delta):
 		else:
 			if(timel - previoustime > 0.5):
 				previoustime = timel
-				print("cat :", state)
 				match state:
 					"attack":
 						attack()
@@ -50,16 +49,13 @@ func _process(delta):
 			if(timel - previoustimeflip > 1.5):
 				previoustimeflip = timel
 				testFlip()
-	else:
-		if(timel - previoustime > 5):
-			self.queue_free()
 			
 #	pass
 func testFlip():
 	var scale = self.scale.x
 	var newscale
-	if(self.global_position.x-other.global_position.x<0):
-		newscale = - 1
+	if(self.global_position.x-other.global_position.x>0):
+		newscale = -1
 	else:
 		newscale =  1
 	if(scale != newscale):
@@ -69,7 +65,6 @@ func testFlip():
 		inAction = false
 		state = "fliping"
 		self.scale.x = newscale
-		self.position.x -= newscale * 130
 		yield(get_tree().create_timer(0.5), "timeout")
 		fliping = false
 		state = randomAttack()
@@ -87,8 +82,9 @@ func attack():
 		if(abs(other.global_position.x-self.global_position.x) > distance):
 			state = "walking"
 		else:
-			$AnimationPlayer.play("attack")
+			$AnimationPlayer.play("HornyBonk")
 			#animation_player.connect("finished", animation_player, "stop")
+			
 			var tmp = randomAttack()
 			var cd = 0.8
 			if(tmp=="attack"):
@@ -107,16 +103,14 @@ func toward_player():
 		#print("attack tp")
 	else:
 		#print("move")
-		$AnimationPlayer.play("walk")
+		#$AnimationPlayer.play("walk")
 		var scale_before = self.scale.x
 		if(self.global_position.x-other.global_position.x<0):
-			self.scale.x = - 1
+			self.scale.x = 1
 			move = 1
 		else:
-			self.scale.x = 1
+			self.scale.x = -1
 			move = -1
-		if(scale_before != self.scale.x):
-			self.global_position.x -= self.scale.x * 130
 		self.global_position.x+=move
 		#print("moving",self.global_position.x)
 		
@@ -124,14 +118,14 @@ func taunt():
 	#print("taunt")
 	if(!inAction && !$AnimationPlayer.is_playing() && !fliping):
 		inAction = true
-		$AnimationPlayer.play("taunt")
+		#$AnimationPlayer.play("taunt")
 		#animation_player.connect("finished", animation_player, "stop")
 		var tmp = randomAttack()
 		var cd = 0.8
 		if(tmp=="taunt"):
 			cd = 0.1
 		#inAction = cooldown(cd)# time attack = 1
-		yield($AnimationPlayer, "animation_finished")
+		#yield($AnimationPlayer, "animation_finished")
 		yield(get_tree().create_timer(cd), "timeout")
 		
 		inAction = false
@@ -139,26 +133,29 @@ func taunt():
 
 func randomAttack():
 	var action = randi() % 13
-	if action < 7:
-		return "attack"
-	else: return "taunt"
+	#if action < 7:
+	return "attack"
+	#else: return "taunt"
 	
 func takehit(hitvalue):
 	healthPoint -= hitvalue
 	force_action_end()
 	if(healthPoint>0):
-		$AnimationPlayer.play("takehit")
+		#$AnimationPlayer.play("takehit")
 		state = "waiting"
 	else:
-		$AnimationPlayer.play("Die")
+		#$AnimationPlayer.play("Die")
 		alive = false
-		#give more time
-		timel = 0
-		#animation finished
 		yield($AnimationPlayer, "animation_finished")
-		#set to 0 to wait 5s to depop
-		previoustime = 0
-		timel = 0
+		queue_free()
 	
 func force_action_end():
 	$AnimationPlayer.stop()
+	
+
+
+func _on_hurtbox_body_entered(body):
+	print("something")
+	if(body.name == "hitbox"):
+		takehit(body.damage)
+		print("puggu")
