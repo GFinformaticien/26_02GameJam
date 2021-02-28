@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pingouin.png-c4ab1e27003157942c70dfbc3b07cdb0.stex"
+path="res://.import/lifebar_under.png-7f11bbe5ae253aabdc247d87fb967a35.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pingouin.png"
-dest_files=[ "res://.import/pingouin.png-c4ab1e27003157942c70dfbc3b07cdb0.stex" ]
+source_file="res://assets/lifebar_under.png"
+dest_files=[ "res://.import/lifebar_under.png-7f11bbe5ae253aabdc247d87fb967a35.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-98289422cd7d93003950872a7b97021f.stex"
+path="res://.import/pingouin.png-391a52c75e8303491b8cfebebda9daec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background.png"
-dest_files=[ "res://.import/background.png-98289422cd7d93003950872a7b97021f.stex" ]
+source_file="res://assets/pingouin.png"
+dest_files=[ "res://.import/pingouin.png-391a52c75e8303491b8cfebebda9daec.stex" ]
 
 [params]
 

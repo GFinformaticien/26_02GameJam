@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://pingouin.png" type="Texture" id=1]
-[ext_resource path="res://ia.gd" type="Script" id=2]
+[ext_resource path="res://assets/pingouin.png" type="Texture" id=1]
+[ext_resource path="res://scripts/ia.gd" type="Script" id=2]
 [ext_resource path="res://Walk.tres" type="Animation" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]

@@ -46,15 +46,10 @@ func _process(delta):
 						taunt()
 					"waiting":
 						waiting()
-				if(timel>20 && !tapped):
-					tapped =true
-					takehit(4)
-				if(timel>30):
-					takehit(1)
 			
 #	pass
 func waiting():
-	print("wait")
+	#print("wait")
 	if(!inAction && !$AnimationPlayer.is_playing()):
 		if(abs(other.global_position.x-self.global_position.x) < distancewait):
 			state ="walking"
@@ -85,9 +80,10 @@ func toward_player():
 		state = "attack"
 		inAction = false
 	else:
-		print("move")
+		#print("move")
 		$AnimationPlayer.play("Walk")
 		if(self.global_position.x-other.global_position.x<0):
+			self.scale.x = 1
 			move = 1
 		else:
 			self.scale.x = - 1
@@ -112,10 +108,11 @@ func randomAttack():
 		
 func cooldown(time):
 	var timer=Timer.new()
-	timer.connect("timeout", self,"actionFinished")
 	timer.set_wait_time(time)
 	add_child(timer)
 	timer.start()
+	yield(timer,"timeout")
+	timer.queue_free()
 
 func actionFinished():
 	randomAttack()
