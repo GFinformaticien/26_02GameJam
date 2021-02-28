@@ -106,7 +106,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id=2]
 tracks/0/type = "value"
-tracks/0/path = NodePath("Skeleton2D/Tronk/ArmL:rotation_degrees")
+tracks/0/path = NodePath("CenterPosition/Skeleton2D/Tronk/ArmL:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -118,7 +118,7 @@ tracks/0/keys = {
 "values": [ 0.0, -80.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Polygons2D/ArmL:visible")
+tracks/1/path = NodePath("CenterPosition/Polygons2D/ArmL:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -130,7 +130,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Polygons2D/InvertedArmL:visible")
+tracks/2/path = NodePath("CenterPosition/Polygons2D/InvertedArmL:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -140,6 +140,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CenterPosition/Skeleton2D/Tronk/ArmL/HandL:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 90.0002, 96.1 ]
 }
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -154,6 +166,44 @@ export var damage = 5
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 89.8212, 38.4705 )
 
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath("CenterPosition/Skeleton2D/Tronk/ArmL:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 0.0669859 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CenterPosition/Polygons2D/ArmL:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CenterPosition/Polygons2D/InvertedArmL:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
 [node name="Puggu" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -162,14 +212,16 @@ visible = false
 position = Vector2( 422, 311 )
 texture = ExtResource( 1 )
 
-[node name="Polygons2D" type="Node2D" parent="."]
-position = Vector2( -470.926, -342.492 )
+[node name="CenterPosition" type="Node2D" parent="."]
+position = Vector2( -166.219, -106.771 )
+
+[node name="Polygons2D" type="Node2D" parent="CenterPosition"]
 scale = Vector2( 0.35, 0.35 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="LegL" type="Polygon2D" parent="Polygons2D"]
+[node name="LegL" type="Polygon2D" parent="CenterPosition/Polygons2D"]
 position = Vector2( 286, -3 )
 texture = ExtResource( 1 )
 skeleton = NodePath("../../Skeleton2D")
@@ -180,7 +232,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="LegR" type="Polygon2D" parent="Polygons2D"]
+[node name="LegR" type="Polygon2D" parent="CenterPosition/Polygons2D"]
 position = Vector2( 365, 21 )
 texture = ExtResource( 1 )
 skeleton = NodePath("../../Skeleton2D")
@@ -188,7 +240,7 @@ polygon = PoolVector2Array( 49.569, 318.103, 68.5345, 311.638, 96.1207, 340.517,
 uv = PoolVector2Array( 49.569, 318.103, 68.5345, 311.638, 96.1207, 340.517, 90.0862, 383.621, 69.8276, 455.604, 73.7069, 504.31, 80.1724, 528.879, 101.293, 532.328, 118.966, 538.793, 136.207, 553.017, 137.5, 582.759, 121.121, 596.121, 87.931, 606.466, 31.8966, 602.586, 6.46553, 595.259, 9.9138, 544.828, 4.31035, 512.5, 3.44829, 466.379, 3.01726, 434.914, 45.2586, 389.655 )
 bones = [ NodePath("Tronk"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/Head"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/Head/EarR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/Head/EarL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegR"), PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1 ), NodePath("Tronk/LegR/FootR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegL/FootL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmR/HandR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmL/HandL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
 
-[node name="ArmL" type="Polygon2D" parent="Polygons2D"]
+[node name="ArmL" type="Polygon2D" parent="CenterPosition/Polygons2D"]
 visible = false
 position = Vector2( 317.965, 284.846 )
 rotation = -0.329867
@@ -201,7 +253,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="InvertedArmL" type="Polygon2D" parent="Polygons2D"]
+[node name="InvertedArmL" type="Polygon2D" parent="CenterPosition/Polygons2D"]
 position = Vector2( 733.052, 171.013 )
 rotation = 2.88852
 scale = Vector2( 1, -1 )
@@ -214,7 +266,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="ArmR" type="Polygon2D" parent="Polygons2D"]
+[node name="ArmR" type="Polygon2D" parent="CenterPosition/Polygons2D"]
 position = Vector2( 369.029, 211.998 )
 rotation = 0.253073
 texture = ExtResource( 1 )
@@ -223,7 +275,7 @@ polygon = PoolVector2Array( 13.8756, -8.61244, 92.823, 14.8325, 68.4211, 72.2488
 uv = PoolVector2Array( 13.8756, -8.61244, 92.823, 14.8325, 68.4211, 72.2488, 60.7655, 106.699, 63.1579, 173.684, 64.5933, 185.646, 72.2488, 195.215, 100.957, 231.1, 109.569, 251.675, 99.5215, 271.77, 82.2966, 291.388, 56.4593, 305.742, 39.7129, 308.134, 23.9234, 285.167, 0.47847, 250.239, 0, 228.708, 12.4402, 203.349, 22.488, 195.215, 14.8325, 182.297, -5.74162, 115.789, -1.91388, 44.9761 )
 bones = [ NodePath("Tronk"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/Head"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/Head/EarR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/Head/EarL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegR/FootR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegL/FootL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmR"), PoolRealArray( 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 ), NodePath("Tronk/ArmR/HandR"), PoolRealArray( 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0 ), NodePath("Tronk/ArmL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmL/HandL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
 
-[node name="Tronk" type="Polygon2D" parent="Polygons2D"]
+[node name="Tronk" type="Polygon2D" parent="CenterPosition/Polygons2D"]
 position = Vector2( 476, 179 )
 offset = Vector2( -415, 0 )
 texture = ExtResource( 1 )
@@ -232,7 +284,7 @@ polygon = PoolVector2Array( 311.498, 27.1777, 366.202, -1.74216, 384.321, 22.996
 uv = PoolVector2Array( 311.498, 27.1777, 366.202, -1.74216, 384.321, 22.9965, 396.167, 32.4042, 428.92, 28.223, 442.857, 4.87805, 460.976, 4.18119, 499.303, 33.4495, 501.394, 159.582, 498.258, 171.429, 424.042, 194.425, 389.547, 198.955, 330.314, 189.199, 320.906, 172.474, 313.24, 63.7631 )
 bones = [ NodePath("Tronk"), PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ), NodePath("Tronk/Head"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/Head/EarR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/Head/EarL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegR/FootR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegL/FootL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmR/HandR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmL/HandL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
 
-[node name="Head" type="Polygon2D" parent="Polygons2D"]
+[node name="Head" type="Polygon2D" parent="CenterPosition/Polygons2D"]
 position = Vector2( 234.169, -189.403 )
 offset = Vector2( -415, 0 )
 texture = ExtResource( 1 )
@@ -241,78 +293,79 @@ polygon = PoolVector2Array( 537.631, 275.246, 602.091, 265.49, 641.812, 252.598,
 uv = PoolVector2Array( 537.631, 275.246, 602.091, 265.49, 641.812, 252.598, 688.85, 257.476, 744.251, 273.852, 753.659, 295.106, 744.948, 321.587, 733.101, 342.841, 721.254, 341.099, 718.467, 348.765, 740.767, 352.598, 732.404, 367.58, 719.164, 368.974, 729.617, 384.305, 726.481, 410.437, 713.24, 417.406, 698.955, 392.319, 687.805, 411.831, 666.899, 422.981, 637.979, 424.723, 605.923, 399.984, 583.972, 366.883, 570.383, 369.671, 554.355, 366.883, 531.359, 357.127, 529.268, 339.357, 551.219, 335.524, 578.397, 337.615, 577.7, 326.814, 564.46, 323.329, 547.387, 332.737, 535.888, 331.692, 531.359, 288.486 )
 bones = [ NodePath("Tronk"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/Head"), PoolRealArray( 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ), NodePath("Tronk/Head/EarR"), PoolRealArray( 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1 ), NodePath("Tronk/Head/EarL"), PoolRealArray( 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegR/FootR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/LegL/FootL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmR/HandR"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Tronk/ArmL/HandL"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
 
-[node name="Skeleton2D" type="Skeleton2D" parent="."]
-position = Vector2( -470.926, -342.492 )
+[node name="Skeleton2D" type="Skeleton2D" parent="CenterPosition"]
 scale = Vector2( 0.35, 0.35 )
 
-[node name="Tronk" type="Bone2D" parent="Skeleton2D"]
-position = Vector2( 1350.76, 992.098 )
+[node name="Tronk" type="Bone2D" parent="CenterPosition/Skeleton2D"]
+position = Vector2( 477.808, 358.753 )
 rest = Transform2D( 1, 0, 0, 1, 477.808, 358.753 )
 
-[node name="Head" type="Bone2D" parent="Skeleton2D/Tronk"]
+[node name="Head" type="Bone2D" parent="CenterPosition/Skeleton2D/Tronk"]
 position = Vector2( -2.3811, -138.898 )
 rest = Transform2D( 1, 0, 0, 1, -2.3811, -138.898 )
 
-[node name="EarR" type="Bone2D" parent="Skeleton2D/Tronk/Head"]
+[node name="EarR" type="Bone2D" parent="CenterPosition/Skeleton2D/Tronk/Head"]
 position = Vector2( -64.2898, -115.087 )
 rotation = -3.14159
 rest = Transform2D( -1, -8.74228e-08, 8.74228e-08, -1, -64.2898, -115.087 )
 
-[node name="EarL" type="Bone2D" parent="Skeleton2D/Tronk/Head"]
+[node name="EarL" type="Bone2D" parent="CenterPosition/Skeleton2D/Tronk/Head"]
 position = Vector2( 57.1464, -114.293 )
 rest = Transform2D( 1, 0, 0, 1, 57.1464, -114.293 )
 
-[node name="LegR" type="Bone2D" parent="Skeleton2D/Tronk"]
+[node name="LegR" type="Bone2D" parent="CenterPosition/Skeleton2D/Tronk"]
 position = Vector2( -43.6535, 10.3181 )
 rest = Transform2D( 1, 0, 0, 1, -43.6535, 10.3181 )
 
-[node name="FootR" type="Bone2D" parent="Skeleton2D/Tronk/LegR"]
+[node name="FootR" type="Bone2D" parent="CenterPosition/Skeleton2D/Tronk/LegR"]
 position = Vector2( -23.811, 210.331 )
-rotation = 0.137881
+rotation = 0.137882
+scale = Vector2( 1, 1 )
 rest = Transform2D( 0.990509, 0.137445, -0.137445, 0.990509, -23.811, 210.331 )
 default_length = 61.0
 
-[node name="LegL" type="Bone2D" parent="Skeleton2D/Tronk"]
+[node name="LegL" type="Bone2D" parent="CenterPosition/Skeleton2D/Tronk"]
 position = Vector2( 41.4126, -5.55602 )
 rest = Transform2D( 1, 0, 0, 1, 41.4126, -5.55602 )
 
-[node name="FootL" type="Bone2D" parent="Skeleton2D/Tronk/LegL"]
+[node name="FootL" type="Bone2D" parent="CenterPosition/Skeleton2D/Tronk/LegL"]
 position = Vector2( -18.2613, 201.6 )
-rotation = 0.137881
+rotation = 0.137882
+scale = Vector2( 1, 1 )
 rest = Transform2D( 0.990509, 0.137445, -0.137445, 0.990509, -18.2613, 201.6 )
 default_length = 61.0
 
-[node name="ArmR" type="Bone2D" parent="Skeleton2D/Tronk"]
+[node name="ArmR" type="Bone2D" parent="CenterPosition/Skeleton2D/Tronk"]
 position = Vector2( -82.5511, -127.786 )
 rest = Transform2D( 1, 0, 0, 1, -82.5511, -127.786 )
 
-[node name="HandR" type="Bone2D" parent="Skeleton2D/Tronk/ArmR"]
+[node name="HandR" type="Bone2D" parent="CenterPosition/Skeleton2D/Tronk/ArmR"]
 position = Vector2( -38.8913, 177.789 )
 rotation = 1.5708
 rest = Transform2D( -4.37114e-08, 1, -1, -4.37114e-08, -38.8913, 177.789 )
 default_length = 70.0
 
-[node name="ArmL" type="Bone2D" parent="Skeleton2D/Tronk"]
+[node name="ArmL" type="Bone2D" parent="CenterPosition/Skeleton2D/Tronk"]
 position = Vector2( 64.5386, -125.405 )
 rest = Transform2D( 1, 0, 0, 1, 64.5386, -125.405 )
 
-[node name="HandL" type="Bone2D" parent="Skeleton2D/Tronk/ArmL"]
+[node name="HandL" type="Bone2D" parent="CenterPosition/Skeleton2D/Tronk/ArmL"]
 position = Vector2( 37.3717, 176.995 )
 rotation = 1.5708
 rest = Transform2D( -4.37114e-08, 1, -1, -4.37114e-08, 37.3717, 176.995 )
 default_length = 70.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/HornyBonk = SubResource( 1 )
-anims/Test = SubResource( 2 )
-
-[node name="HornyHammer" type="Sprite" parent="."]
+[node name="HornyHammer" type="Sprite" parent="CenterPosition"]
 visible = false
-position = Vector2( 54.7172, 35.8369 )
-scale = Vector2( 0.15, 0.15 )
+position = Vector2( 196.037, 166.536 )
+scale = Vector2( 0.175, 0.175 )
 texture = ExtResource( 2 )
 centered = false
 offset = Vector2( 0, -559 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/HornyBonk = SubResource( 1 )
+anims/Test = SubResource( 2 )
 
 [node name="hibox" type="RigidBody2D" parent="."]
 position = Vector2( -470.926, -342.492 )

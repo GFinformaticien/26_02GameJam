@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/objects.png" type="Texture" id=1]
+
+[node name="Furniture" type="Node2D"]
+
+[node name="Water" type="Polygon2D" parent="."]
+offset = Vector2( -230, -92 )
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( 169.397, 41.3793, 179.741, 149.569, 277.155, 148.707, 288.362, 46.1207, 265.086, 7.32758 )
+uv = PoolVector2Array( 169.397, 41.3793, 179.741, 149.569, 277.155, 148.707, 288.362, 46.1207, 265.086, 7.32758 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="WaterAndIce" type="Polygon2D" parent="."]
+position = Vector2( 0.707138, 0.707108 )
+offset = Vector2( -350, -70 )
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( 288.362, 46.1207, 307.759, 141.81, 345.259, 151.293, 391.81, 144.397, 414.655, 42.6724, 370.69, 31.4655, 353.879, -4.31035, 321.552, -0.862068, 317.672, 36.6379 )
+uv = PoolVector2Array( 288.362, 46.1207, 307.759, 141.81, 345.259, 151.293, 391.81, 144.397, 414.655, 42.6724, 370.69, 31.4655, 353.879, -4.31035, 321.552, -0.862068, 317.672, 36.6379 )
+__meta__ = {
+"_editor_description_": ""
+}
