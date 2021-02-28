@@ -1,6 +1,6 @@
 extends Node2D
 
-export var Mob: PackedScene
+export var Mob: Array
 var mobTimer = null
 var SPAWN_INTERVAL = 4
 export var enabled: bool = false
@@ -16,6 +16,6 @@ func _on_mob_timer():
 		var playerPosition = get_node("UFTKA").transform.get_origin()
 		var x = playerPosition.x
 		var y = playerPosition.y
-		var newMob = Mob.instance()
+		var newMob = (Mob[randi() % Mob.size()] as PackedScene).instance()
 		newMob.position = Vector2(x - 200, y)
 		add_child(newMob)

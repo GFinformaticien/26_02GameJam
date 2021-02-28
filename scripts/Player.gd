@@ -1,6 +1,5 @@
 extends Node2D
 
-
 var timel
 var previoustime
 var dashing
@@ -12,24 +11,6 @@ func _ready():
 	previoustime = 0
 	timel = 0
 	dashing = false
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
-#func _input(event):
-	#if event.is_action_pressed("ui_weak"):
-		#weak_attack()
-	#elif event.is_action_pressed("ui_strong"):
-		#strong_attack()
-
-func weak_attack():
-	print("Weak attack")
-	pass
-
-func strong_attack():
-	print("Strong attack")
-	pass
 
 export var speed = 140
 
@@ -71,5 +52,10 @@ func _physics_process(delta):
 				position.x += speed * delta * 2.8
 			else:
 				position.x -= speed * delta * 2.8
-	
-	
+
+func _on_Health_health_changed(health):
+	print("djozuhdoazhdoizajd")
+	if(health <= 0):
+		$AnimationPlayer.stop()
+		# TODO: Play the die animation
+		# $AnimationPlayer.play("roullade")
