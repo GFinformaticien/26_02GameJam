@@ -6,7 +6,7 @@ extends Node2D
 # var b = "text"
 var state = "waiting"
 var other#=preload("blanknode2D.tscn")
-var distance = 200
+var distance = 170
 var distancewait = 900
 var inAction = false
 var animation_player
@@ -24,7 +24,7 @@ func _ready():
 	timel = 0
 	previoustime = 0
 	previoustimeflip = 0
-	healthPoint = 5
+	healthPoint = 3
 	alive = true
 	fliping = false
 
@@ -34,15 +34,15 @@ func _process(delta):
 		timel += delta
 		if state == "walking":
 			toward_player()
-			previoustime = timel
+			if(timel - previoustime > 0.5):
+				previoustime = timel
 		else:
 			if(timel - previoustime > 0.5):
 				previoustime = timel
+				#print(state)
 				match state:
 					"attack":
 						attack()
-					"spe":
-						spe_attack()
 					"taunt":
 						taunt()
 					"waiting":
@@ -56,18 +56,17 @@ func testFlip():
 	var scale = self.scale.x
 	var newscale
 	if(self.global_position.x-other.global_position.x<0):
-		newscale = 1
-	else:
 		newscale = - 1
+	else:
+		newscale =  1
 	if(scale != newscale):
 		fliping = true
-		if($AnimationPlayer.is_playing() && state == "spe"):
-			yield(get_tree().create_timer(2.3), "timeout")
-		elif($AnimationPlayer.is_playing()):
-			yield(get_tree().create_timer(1.1), "timeout")
+		if($AnimationPlayer.is_playing()):
+			yield(get_tree().create_timer(1), "timeout")
 		state = "fliping"
 		self.scale.x = newscale
-		yield(get_tree().create_timer(0.8), "timeout")
+		self.position.x -= newscale * 130
+		yield(get_tree().create_timer(0.5), "timeout")
 		fliping = false
 		state = randomAttack()
 		
@@ -79,6 +78,7 @@ func waiting():
 
 func attack():
 	if(!inAction && !$AnimationPlayer.is_playing() && !fliping):
+		#print("enter attack")
 		inAction = true
 		if(abs(other.global_position.x-self.global_position.x) > distance):
 			state = "walking"
@@ -88,25 +88,9 @@ func attack():
 			var tmp = randomAttack()
 			var cd = 1.2
 			if(tmp=="attack"):
-				cd = 1.0
+				cd = 1.4
 			#inAction = cooldown(cd)# real cd = 0.7 -> time attack = 0.614
 			yield(get_tree().create_timer(cd), "timeout")
-			inAction = false
-			state = tmp
-
-func spe_attack():
-	if(!inAction && !$AnimationPlayer.is_playing() && !fliping):
-		inAction = true
-		if(abs(other.global_position.x-self.global_position.x) > distance):
-			state = "walking"
-		else:
-			$AnimationPlayer.play("spe_attack")
-			#animation_player.connect("finished", animation_player, "stop")
-			var tmp = randomAttack()
-			var cd = 3
-			if(tmp=="spe"):
-				cd = 2.3
-			yield(get_tree().create_timer(cd), "timeout")# real cd = 0.7 -> time attack = 2.19
 			inAction = false
 			state = tmp
 
@@ -115,21 +99,27 @@ func toward_player():
 	if(abs(other.global_position.x-self.global_position.x) < distance):
 		state = "attack"
 		inAction = false
+		#print("attack tp")
 	else:
 		#print("move")
-		$AnimationPlayer.play("Walk")
+		$AnimationPlayer.play("walk")
+		var scale_before = self.scale.x
 		if(self.global_position.x-other.global_position.x<0):
-			self.scale.x = 1
+			self.scale.x = - 1
 			move = 1
 		else:
-			self.scale.x = - 1
+			self.scale.x = 1
 			move = -1
+		if(scale_before != self.scale.x):
+			self.global_position.x -= self.scale.x * 130
 		self.global_position.x+=move
+		#print("moving",self.global_position.x)
 		
 func taunt():
+	#print("taunt")
 	if(!inAction && !$AnimationPlayer.is_playing() && !fliping):
 		inAction = true
-		$AnimationPlayer.play("taunt")
+		#$AnimationPlayer.play("taunt")
 		#animation_player.connect("finished", animation_player, "stop")
 		var tmp = randomAttack()
 		var cd = 1.3
@@ -144,9 +134,7 @@ func randomAttack():
 	var action = randi() % 13
 	if action < 7:
 		return "attack"
-	elif action < 9:
-		return "spe"
-	else: "taunt"
+	else: return "taunt"
 	
 func takehit(hitvalue):
 	healthPoint -= hitvalue

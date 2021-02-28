@@ -41,7 +41,6 @@ texture = ExtResource( 3 )
 
 [node name="Cat" parent="." instance=ExtResource( 7 )]
 position = Vector2( 400, 400 )
-scale = Vector2( 0.3, 0.3 )
 [connection signal="health_changed" from="UFTKA/Health" to="InterfaceLayer/Interface" method="_on_Health_health_changed"]
 
 [editable path="UFTKA"]
