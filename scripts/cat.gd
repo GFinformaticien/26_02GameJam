@@ -16,7 +16,6 @@ var previoustimeflip
 var healthPoint
 var alive
 var fliping
-const CAN_BE_HIT_BY = ["UFTKA", "Puggu"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,8 +51,7 @@ func _process(delta):
 				previoustimeflip = timel
 				testFlip()
 	else:
-		if(timel - previoustime > 5):
-			self.queue_free()
+		queue_free()
 			
 #	pass
 func testFlip():
@@ -148,23 +146,17 @@ func takehit(hitvalue):
 	healthPoint -= hitvalue
 	force_action_end()
 	if(healthPoint>0):
-		$AnimationPlayer.play("takehit")
+		$AnimationPlayer.play("hurt")
 		state = "waiting"
 	else:
 		$AnimationPlayer.play("die")
-		alive = false
-		#give more time
-		timel = 0
-		#animation finished
 		yield($AnimationPlayer, "animation_finished")
-		#set to 0 to wait 5s to depop
-		previoustime = 0
-		timel = 0
+		alive = false
 	
 func force_action_end():
 	$AnimationPlayer.stop()
 
 
 func _on_hurtbox_body_entered(body):
-	if(body.name == "hitbox" and CAN_BE_HIT_BY.count(body.get_parent().get_name()) > 0):
+	if(body.name == "hitbox"):
 		takehit(body.damage)

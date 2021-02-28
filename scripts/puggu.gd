@@ -25,7 +25,7 @@ func _ready():
 	previoustime = 0
 	previoustimeflip = 0
 	healthPoint = 3
-	alive = true
+	alive =true
 	fliping = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,8 +51,7 @@ func _process(delta):
 				previoustimeflip = timel
 				testFlip()
 	else:
-		if(timel - previoustime > 5):
-			self.queue_free()
+		queue_free()
 			
 #	pass
 func testFlip():
@@ -151,14 +150,8 @@ func takehit(hitvalue):
 		state = "waiting"
 	else:
 		$AnimationPlayer.play("Die")
-		alive = false
-		#give more time
-		timel = 0
-		#animation finished
 		yield($AnimationPlayer, "animation_finished")
-		#set to 0 to wait 5s to depop
-		previoustime = 0
-		timel = 0
+		alive = false
 	
 func force_action_end():
 	$AnimationPlayer.stop()

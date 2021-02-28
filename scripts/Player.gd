@@ -62,5 +62,5 @@ func _on_Health_health_changed(health):
 
 
 func _on_hitbox_player_body_entered(body):
-	if(body.name == "hitbox"):
+	if(body.name == "hitbox" and body.get_parent().get_name() != self.get_name()):
 		$Health.take_damage(body.damage)

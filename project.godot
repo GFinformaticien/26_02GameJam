@@ -19,6 +19,12 @@ config/name="GameJamPoteAlex"
 run/main_scene="res://scenes/levels/principale.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1896
+window/size/height=908
+window/size/fullscreen=true
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

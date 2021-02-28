@@ -299,6 +299,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [ Vector2( 6.15118, 1.09134 ) ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("hitbox/foot_player_box:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "foot"
@@ -434,6 +446,18 @@ tracks/10/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( -13.0963, -21.8269 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("hitbox/punch_player_box:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -607,21 +631,45 @@ tracks/13/keys = {
 "update": 0,
 "values": [ -90.0 ]
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("hitbox/punch_player_box:disabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("hitbox/foot_player_box:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 46.471, 104.797 )
 
-[sub_resource type="GDScript" id=9]
+[sub_resource type="GDScript" id=6]
 script/source = "extends RigidBody2D
 
-export var damage = 7
+export var damage = 2
 "
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 60, 50.3836 )
+extents = Vector2( 39.8621, 39.6431 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 59.0421, 46.8147 )
+extents = Vector2( 43.9629, 39.3063 )
 
 [node name="UFTKA" type="Node2D"]
 script = ExtResource( 2 )
@@ -696,7 +744,7 @@ default_length = 8.0
 
 [node name="LegR" type="Bone2D" parent="Skeleton2D/Tronk"]
 position = Vector2( 6.15118, 1.09134 )
-rotation = 1.5708
+rotation = 2.0944
 rest = Transform2D( -4.37114e-08, 1, -1, -4.37114e-08, 6.15118, 1.09134 )
 default_length = 22.0
 
@@ -708,13 +756,13 @@ default_length = 22.0
 
 [node name="ArmL" type="Bone2D" parent="Skeleton2D/Tronk"]
 position = Vector2( 10.6157, -22.8189 )
-rotation = 1.5708
+rotation = 0.872665
 rest = Transform2D( -4.37114e-08, 1, -1, -4.37114e-08, 10.6157, -22.8189 )
 default_length = 25.0
 
 [node name="ArmR" type="Bone2D" parent="Skeleton2D/Tronk"]
 position = Vector2( -13.0963, -21.8269 )
-rotation = 1.5708
+rotation = 2.26893
 rest = Transform2D( -4.37114e-08, 1, -1, -4.37114e-08, -13.0963, -21.8269 )
 default_length = 25.0
 
@@ -725,26 +773,28 @@ anims/foot = SubResource( 3 )
 anims/roullade = SubResource( 4 )
 
 [node name="hurtbox" type="RigidBody2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 mode = 3
-contacts_reported = 3
+contacts_reported = 6
 contact_monitor = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2( -0.26487, 2.00227 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="hitbox" type="RigidBody2D" parent="."]
+collision_mask = 0
 mode = 3
-script = SubResource( 9 )
+script = SubResource( 6 )
 
 [node name="punch_player_box" type="CollisionShape2D" parent="hitbox"]
-position = Vector2( 99.1922, -50.2965 )
+position = Vector2( 92.0651, -37.8239 )
 shape = SubResource( 7 )
 disabled = true
 
 [node name="foot_player_box" type="CollisionShape2D" parent="hitbox"]
-position = Vector2( 100.023, 58.1751 )
-rotation = -0.0105748
+position = Vector2( 93.7867, 43.9208 )
 shape = SubResource( 8 )
 disabled = true
 
