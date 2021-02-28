@@ -732,13 +732,13 @@ tracks/8/keys = {
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 38.8848, 111.229 )
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=7]
 script/source = "extends RigidBody2D
 
 export var damage = 5
 "
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 40.5366, 42.771 )
 
 [node name="Cat" type="Node2D"]
@@ -937,9 +937,10 @@ shape = SubResource( 6 )
 
 [node name="hitbox" type="RigidBody2D" parent="."]
 mode = 3
-script = SubResource( 8 )
+script = SubResource( 7 )
 
 [node name="attack" type="CollisionShape2D" parent="hitbox"]
 position = Vector2( 20.6362, 58.7338 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 disabled = true
+[connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]

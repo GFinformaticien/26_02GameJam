@@ -16,6 +16,8 @@ var previoustimeflip
 var healthPoint
 var alive
 var fliping
+const CAN_BE_HIT_BY = ["UFTKA"]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -164,3 +166,8 @@ func takehit(hitvalue):
 	
 func force_action_end():
 	$AnimationPlayer.stop()
+
+
+func _on_hurtbox_body_entered(body):
+	if(body.name == "hitbox" and CAN_BE_HIT_BY.count(body.get_parent().get_name()) > 0):
+		takehit(body.damage)

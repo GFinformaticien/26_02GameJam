@@ -580,3 +580,4 @@ disabled = true
 position = Vector2( 75.755, -67.994 )
 shape = SubResource( 9 )
 disabled = true
+[connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
