@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/cat.png" type="Texture" id=1]
 [ext_resource path="res://assets/cat_demembre.png" type="Texture" id=2]
@@ -245,6 +245,66 @@ tracks/19/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -24.2433, -24.2433, 0.0 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("hitbox/CollisionShape2D:rotation_degrees")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -42.1651, -63.5191, 0.0 ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("hitbox/CollisionShape2D:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 100.794, 70.5556 ), Vector2( 36.504, 88.8107 ), Vector2( 23.0567, 133.987 ), Vector2( 100.794, 70.5556 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("hurtbox/attack:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 20.6362, 58.7338 ), Vector2( -67.3638, 81.7338 ), Vector2( -109.364, 136.734 ), Vector2( 20.6362, 58.7338 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("hurtbox/attack:rotation_degrees")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -44.296, -87.9753, 0.0 ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("hurtbox/attack:disabled")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false, true ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -673,6 +733,9 @@ tracks/8/keys = {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 38.8848, 111.229 )
 
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 40.5366, 42.771 )
+
 [node name="Cat" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -788,7 +851,7 @@ rest = Transform2D( 1, 0, 0, 1, -37.304, 165.883 )
 
 [node name="PawL" type="Bone2D" parent="Skeleton2D/Torso/ArmL/ForearmL"]
 position = Vector2( -15.669, -183.867 )
-rotation = 2.75064
+rotation = -3.59055
 scale = Vector2( 1, 1 )
 rest = Transform2D( -0.932324, 0.361625, -0.361625, -0.932324, -15.669, -183.867 )
 default_length = 61.0
@@ -803,7 +866,7 @@ rest = Transform2D( 1, 0, 0, 1, -29.3669, 182.551 )
 
 [node name="PawR" type="Bone2D" parent="Skeleton2D/Torso/ArmR/ForearmR"]
 position = Vector2( -47.1538, -145.313 )
-rotation = 2.71748
+rotation = -3.71456
 scale = Vector2( 1, 1 )
 rest = Transform2D( -0.911403, 0.411514, -0.411514, -0.911403, -47.1538, -145.313 )
 default_length = 59.0
@@ -869,3 +932,10 @@ anims/walk = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 position = Vector2( 100.794, 70.5556 )
 shape = SubResource( 3 )
+
+[node name="hurtbox" type="RigidBody2D" parent="."]
+
+[node name="attack" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2( 20.6362, 58.7338 )
+shape = SubResource( 7 )
+disabled = true
