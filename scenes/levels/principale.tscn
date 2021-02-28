@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/mobs/ia.tscn" type="PackedScene" id=1]
 [ext_resource path="res://blanknode2D.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/player/UFTKA.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/spawner.gd" type="Script" id=5]
 [ext_resource path="res://scenes/UI/Interface.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/mobs/Cat.tscn" type="PackedScene" id=7]
 
 [node name="Scene" type="Node2D"]
 script = ExtResource( 5 )
@@ -37,6 +38,10 @@ position = Vector2( 24.2406, 299.851 )
 scale = Vector2( 1, 1.02517 )
 z_index = -2
 texture = ExtResource( 3 )
+
+[node name="Cat" parent="." instance=ExtResource( 7 )]
+position = Vector2( 400, 400 )
+scale = Vector2( 0.3, 0.3 )
 [connection signal="health_changed" from="UFTKA/Health" to="InterfaceLayer/Interface" method="_on_Health_health_changed"]
 
 [editable path="UFTKA"]

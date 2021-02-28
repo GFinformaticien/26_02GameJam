@@ -70,7 +70,7 @@ func testFlip():
 		self.scale.x = newscale
 		yield(get_tree().create_timer(0.8), "timeout")
 		fliping = false
-		prepareNew()
+		state = randomAttack()
 		
 func waiting():
 	#print("wait")
@@ -86,13 +86,14 @@ func attack():
 		else:
 			$AnimationPlayer.play("attack")
 			#animation_player.connect("finished", animation_player, "stop")
-			prepareNew()
+			var tmp = randomAttack()
 			var cd = 1.2
-			if(state=="attack"):
+			if(tmp=="attack"):
 				cd = 1.0
 			#inAction = cooldown(cd)# real cd = 0.7 -> time attack = 0.614
 			yield(get_tree().create_timer(cd), "timeout")
 			inAction = false
+			state = tmp
 
 func spe_attack():
 	if(!inAction && !$AnimationPlayer.is_playing() && !fliping):
@@ -102,12 +103,13 @@ func spe_attack():
 		else:
 			$AnimationPlayer.play("spe_attack")
 			#animation_player.connect("finished", animation_player, "stop")
-			prepareNew()
+			var tmp = randomAttack()
 			var cd = 3
-			if(state=="spe"):
+			if(tmp=="spe"):
 				cd = 2.3
 			yield(get_tree().create_timer(cd), "timeout")# real cd = 0.7 -> time attack = 2.19
 			inAction = false
+			state = tmp
 
 func toward_player():
 	var move
@@ -130,26 +132,23 @@ func taunt():
 		inAction = true
 		$AnimationPlayer.play("taunt")
 		#animation_player.connect("finished", animation_player, "stop")
-		prepareNew()
+		var tmp = randomAttack()
 		var cd = 1.3
-		if(state=="taunt"):
+		if(tmp=="taunt"):
 			cd = 0.915
 		#inAction = cooldown(cd)# time attack = 1
 		yield(get_tree().create_timer(cd), "timeout")
 		inAction = false
+		state = tmp
 
 func randomAttack():
 	var action = randi() % 13
 	if action < 7:
-		state = "attack"
-	else:
-		if action < 9:
-			state = "spe"
-		else: state = "taunt"
+		return "attack"
+	elif action < 9:
+		return "spe"
+	else: "taunt"
 	
-func prepareNew():
-	randomAttack()
-
 func takehit(hitvalue):
 	healthPoint -= hitvalue
 	force_action_end()
