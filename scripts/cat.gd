@@ -39,7 +39,7 @@ func _process(delta):
 		else:
 			if(timel - previoustime > 0.5):
 				previoustime = timel
-				#print(state)
+				print("cat :", state)
 				match state:
 					"attack":
 						attack()

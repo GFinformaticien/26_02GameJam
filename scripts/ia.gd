@@ -38,6 +38,7 @@ func _process(delta):
 		else:
 			if(timel - previoustime > 0.5):
 				previoustime = timel
+				print("ia :", state)
 				match state:
 					"attack":
 						attack()
@@ -146,7 +147,7 @@ func randomAttack():
 		return "attack"
 	elif action < 9:
 		return "spe"
-	else: "taunt"
+	else: return "taunt"
 	
 func takehit(hitvalue):
 	healthPoint -= hitvalue
