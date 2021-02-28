@@ -63,9 +63,9 @@ func testFlip():
 	if(scale != newscale):
 		fliping = true
 		if($AnimationPlayer.is_playing() && state == "spe"):
-			yield(get_tree().create_timer(1.8), "timeout")
-		else:
-			yield(get_tree().create_timer(1.2), "timeout")
+			yield(get_tree().create_timer(2.3), "timeout")
+		elif($AnimationPlayer.is_playing()):
+			yield(get_tree().create_timer(1.1), "timeout")
 		state = "fliping"
 		self.scale.x = newscale
 		yield(get_tree().create_timer(0.8), "timeout")
