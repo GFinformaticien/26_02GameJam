@@ -6,7 +6,7 @@ extends Node2D
 # var b = "text"
 var state = "waiting"
 var other#=preload("blanknode2D.tscn")
-var distance = 200
+var distance = 170
 var distancewait = 900
 var inAction = false
 var animation_player
@@ -16,8 +16,6 @@ var previoustimeflip
 var healthPoint
 var alive
 var fliping
-const CAN_BE_HIT_BY = ["UFTKA"]
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,7 +24,7 @@ func _ready():
 	timel = 0
 	previoustime = 0
 	previoustimeflip = 0
-	healthPoint = 5
+	healthPoint = 3
 	alive = true
 	fliping = false
 
@@ -36,16 +34,15 @@ func _process(delta):
 		timel += delta
 		if state == "walking":
 			toward_player()
-			previoustime = timel
+			if(timel - previoustime > 0.5):
+				previoustime = timel
 		else:
 			if(timel - previoustime > 0.5):
 				previoustime = timel
-				print("ia : state -", state, " inAction-", inAction, " AnimationPlayer.is_playing() -",$AnimationPlayer.is_playing()," fliping-",fliping)
+				print("cat :", state)
 				match state:
 					"attack":
 						attack()
-					"spe":
-						spe_attack()
 					"taunt":
 						taunt()
 					"waiting":
@@ -56,23 +53,24 @@ func _process(delta):
 	else:
 		if(timel - previoustime > 5):
 			self.queue_free()
+			
 #	pass
 func testFlip():
 	var scale = self.scale.x
 	var newscale
 	if(self.global_position.x-other.global_position.x<0):
-		newscale = 1
-	else:
 		newscale = - 1
+	else:
+		newscale =  1
 	if(scale != newscale):
 		fliping = true
 		if($AnimationPlayer.is_playing()):
 			yield($AnimationPlayer, "animation_finished")
 		inAction = false
-		yield(get_tree().create_timer(0.5), "timeout")
 		state = "fliping"
 		self.scale.x = newscale
-		yield(get_tree().create_timer(0.8), "timeout")
+		self.position.x -= newscale * 130
+		yield(get_tree().create_timer(0.5), "timeout")
 		fliping = false
 		state = randomAttack()
 		
@@ -84,6 +82,7 @@ func waiting():
 
 func attack():
 	if(!inAction && !$AnimationPlayer.is_playing() && !fliping):
+		#print("enter attack")
 		inAction = true
 		if(abs(other.global_position.x-self.global_position.x) > distance):
 			state = "walking"
@@ -100,51 +99,41 @@ func attack():
 			inAction = false
 			state = tmp
 
-func spe_attack():
-	if(!inAction && !$AnimationPlayer.is_playing() && !fliping):
-		inAction = true
-		if(abs(other.global_position.x-self.global_position.x) > distance):
-			state = "walking"
-		else:
-			$AnimationPlayer.play("spe_attack")
-			#animation_player.connect("finished", animation_player, "stop")
-			var tmp = randomAttack()
-			var cd = 0.8
-			if(tmp=="spe"):
-				cd = 1.2
-			yield($AnimationPlayer, "animation_finished")
-			yield(get_tree().create_timer(cd), "timeout")# real cd = 0.7 -> time attack = 2.19
-			inAction = false
-			state = tmp
-
 func toward_player():
 	var move
 	if(abs(other.global_position.x-self.global_position.x) < distance):
 		state = "attack"
 		inAction = false
+		#print("attack tp")
 	else:
 		#print("move")
-		$AnimationPlayer.play("Walk")
+		$AnimationPlayer.play("walk")
+		var scale_before = self.scale.x
 		if(self.global_position.x-other.global_position.x<0):
-			self.scale.x = 1
+			self.scale.x = - 1
 			move = 1
 		else:
-			self.scale.x = - 1
+			self.scale.x = 1
 			move = -1
+		if(scale_before != self.scale.x):
+			self.global_position.x -= self.scale.x * 130
 		self.global_position.x+=move
+		#print("moving",self.global_position.x)
 		
 func taunt():
+	#print("taunt")
 	if(!inAction && !$AnimationPlayer.is_playing() && !fliping):
 		inAction = true
 		$AnimationPlayer.play("taunt")
 		#animation_player.connect("finished", animation_player, "stop")
 		var tmp = randomAttack()
-		var cd = 1.3
+		var cd = 0.8
 		if(tmp=="taunt"):
-			cd = 0.915
+			cd = 0.1
 		#inAction = cooldown(cd)# time attack = 1
 		yield($AnimationPlayer, "animation_finished")
 		yield(get_tree().create_timer(cd), "timeout")
+		
 		inAction = false
 		state = tmp
 
@@ -152,8 +141,6 @@ func randomAttack():
 	var action = randi() % 13
 	if action < 7:
 		return "attack"
-	elif action < 9:
-		return "spe"
 	else: return "taunt"
 	
 func takehit(hitvalue):
@@ -175,8 +162,3 @@ func takehit(hitvalue):
 	
 func force_action_end():
 	$AnimationPlayer.stop()
-
-
-func _on_hurtbox_body_entered(body):
-	if(body.name == "hitbox" and CAN_BE_HIT_BY.count(body.get_parent().get_name()) > 0):
-		takehit(body.damage)
