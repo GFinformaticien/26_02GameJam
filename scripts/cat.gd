@@ -62,7 +62,7 @@ func testFlip():
 	if(scale != newscale):
 		fliping = true
 		if($AnimationPlayer.is_playing()):
-			yield(get_tree().create_timer(1), "timeout")
+			yield($AnimationPlayer, "animation_finished")
 		state = "fliping"
 		self.scale.x = newscale
 		self.position.x -= newscale * 130
@@ -86,10 +86,11 @@ func attack():
 			$AnimationPlayer.play("attack")
 			#animation_player.connect("finished", animation_player, "stop")
 			var tmp = randomAttack()
-			var cd = 1.2
+			var cd = 0.8
 			if(tmp=="attack"):
-				cd = 1.4
+				cd = 0.5
 			#inAction = cooldown(cd)# real cd = 0.7 -> time attack = 0.614
+			yield($AnimationPlayer, "animation_finished")
 			yield(get_tree().create_timer(cd), "timeout")
 			inAction = false
 			state = tmp
@@ -122,10 +123,11 @@ func taunt():
 		$AnimationPlayer.play("taunt")
 		#animation_player.connect("finished", animation_player, "stop")
 		var tmp = randomAttack()
-		var cd = 1.3
+		var cd = 0.8
 		if(tmp=="taunt"):
-			cd = 0.915
+			cd = 0.1
 		#inAction = cooldown(cd)# time attack = 1
+		yield($AnimationPlayer, "animation_finished")
 		yield(get_tree().create_timer(cd), "timeout")
 		
 		inAction = false
