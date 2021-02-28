@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://lifebar_under.png" type="Texture" id=1]
+[ext_resource path="res://hplabel.png" type="Texture" id=2]
+[ext_resource path="res://lifebar_progress.png" type="Texture" id=3]
+[ext_resource path="res://lifebar_over.png" type="Texture" id=4]
+[ext_resource path="res://LifeBar.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "shake"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureProgress/Number:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 111, 20 ), Vector2( 107, 20 ), Vector2( 110, 20 ), Vector2( 113, 20 ), Vector2( 111, 20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureProgress/Number:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.894118, 0.0588235, 0.0588235, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="LifeBar" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_right = 250.0
+margin_bottom = 50.0
+texture_under = ExtResource( 1 )
+texture_over = ExtResource( 4 )
+texture_progress = ExtResource( 3 )
+
+[node name="Number" type="Label" parent="TextureProgress"]
+margin_left = 111.0
+margin_top = 20.0
+margin_right = 164.0
+margin_bottom = 39.0
+text = "100/100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="TextureRect" parent="TextureProgress"]
+margin_left = 85.1786
+margin_top = 19.0
+margin_right = 106.179
+margin_bottom = 69.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/shake = SubResource( 1 )
