@@ -51,7 +51,9 @@ func _process(delta):
 			if(timel - previoustimeflip > 1.5):
 				previoustimeflip = timel
 				testFlip()
-			
+	else:
+		if(timel - previoustime > 5):
+			self.queue_free()
 #	pass
 func testFlip():
 	var scale = self.scale.x
@@ -161,6 +163,13 @@ func takehit(hitvalue):
 	else:
 		$AnimationPlayer.play("Die")
 		alive = false
+		#give more time
+		timel = 0
+		#animation finished
+		yield($AnimationPlayer, "animation_finished")
+		#set to 0 to wait 5s to depop
+		previoustime = 0
+		timel = 0
 	
 func force_action_end():
 	$AnimationPlayer.stop()
