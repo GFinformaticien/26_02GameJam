@@ -3,11 +3,11 @@ extends Node
 signal health_changed(health)
 #signal health_depleted
 
-var health = 50
+var health = 0
 export(int) var max_health = 100
 
 func _ready():
-	health = max_health
+	health = max_health/2
 	emit_signal("health_changed", health)
 	print("TEST")
 

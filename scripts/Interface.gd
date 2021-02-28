@@ -1,6 +1,7 @@
 extends Node
 
 signal health_changed(health)
+signal wesh_wesh(mdr)
 
 func _ready():
 	var health_node = null
@@ -9,7 +10,6 @@ func _ready():
 			health_node = node.get_node("Health")
 			break
 	$Bars/LifeBar.initialize(health_node.max_health)
-
 
 func _on_Health_health_changed(health):
 	emit_signal("health_changed", health)
