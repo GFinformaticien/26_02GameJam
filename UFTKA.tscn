@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://partsUFTKA.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://health.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Walk"
@@ -175,7 +176,7 @@ tracks/13/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "fist"
 length = 0.7
 tracks/0/type = "value"
@@ -275,7 +276,7 @@ tracks/7/keys = {
 "values": [ true, false, false, true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 resource_name = "foot"
 length = 0.72
 tracks/0/type = "value"
@@ -387,7 +388,7 @@ tracks/8/keys = {
 "values": [ true, false, false, true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "roullade"
 length = 1.302
 tracks/0/type = "value"
@@ -451,13 +452,13 @@ tracks/4/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 14.6882, 30.877 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 13.175, 11.907 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 13.742, 17.2 )
 
 [node name="UFTKA" type="Node2D"]
@@ -555,24 +556,27 @@ default_length = 25.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Walk = SubResource( 1 )
-anims/fist = SubResource( 3 )
-anims/foot = SubResource( 5 )
-anims/roullade = SubResource( 7 )
+anims/fist = SubResource( 2 )
+anims/foot = SubResource( 3 )
+anims/roullade = SubResource( 4 )
 
 [node name="hitbox_player" type="RigidBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_player"]
 position = Vector2( -0.26487, 2.00227 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="hurtbox" type="RigidBody2D" parent="."]
 
 [node name="punch_player_box" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2( 27.67, -15.065 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 disabled = true
 
 [node name="foot_player_box" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2( 28.869, 14.929 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 disabled = true
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource( 3 )
