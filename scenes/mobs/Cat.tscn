@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/cat.png" type="Texture" id=1]
 [ext_resource path="res://assets/cat_demembre.png" type="Texture" id=2]
@@ -247,7 +247,7 @@ tracks/19/keys = {
 "values": [ 0.0, -24.2433, -24.2433, 0.0 ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("hitbox/CollisionShape2D:rotation_degrees")
+tracks/20/path = NodePath("hurtbox/CollisionShape2D:rotation_degrees")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -259,7 +259,7 @@ tracks/20/keys = {
 "values": [ 0.0, -42.1651, -63.5191, 0.0 ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("hitbox/CollisionShape2D:position")
+tracks/21/path = NodePath("hurtbox/CollisionShape2D:position")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -271,7 +271,7 @@ tracks/21/keys = {
 "values": [ Vector2( 100.794, 70.5556 ), Vector2( 36.504, 88.8107 ), Vector2( 23.0567, 133.987 ), Vector2( 100.794, 70.5556 ) ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("hurtbox/attack:position")
+tracks/22/path = NodePath("hitbox/attack:position")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -283,7 +283,7 @@ tracks/22/keys = {
 "values": [ Vector2( 20.6362, 58.7338 ), Vector2( -67.3638, 81.7338 ), Vector2( -109.364, 136.734 ), Vector2( 20.6362, 58.7338 ) ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("hurtbox/attack:rotation_degrees")
+tracks/23/path = NodePath("hitbox/attack:rotation_degrees")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -295,7 +295,7 @@ tracks/23/keys = {
 "values": [ 0.0, -44.296, -87.9753, 0.0 ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("hurtbox/attack:disabled")
+tracks/24/path = NodePath("hitbox/attack:disabled")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -307,10 +307,10 @@ tracks/24/keys = {
 "values": [ true, false, false, true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "die"
 tracks/0/type = "value"
-tracks/0/path = NodePath("hitbox/CollisionShape2D:disabled")
+tracks/0/path = NodePath("hurtbox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -394,7 +394,7 @@ tracks/6/keys = {
 "values": [ 0.0, 61.0267, 175.617, 61.0267, 93.1756 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "hurt"
 length = 1.603
 tracks/0/type = "value"
@@ -518,7 +518,7 @@ tracks/9/keys = {
 "values": [ Vector2( -28.9119, 16.0835 ), Vector2( -28.9119, 16.0835 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("hitbox/CollisionShape2D:rotation_degrees")
+tracks/10/path = NodePath("hurtbox/CollisionShape2D:rotation_degrees")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -530,7 +530,7 @@ tracks/10/keys = {
 "values": [ 0.0, 35.8238, 54.3039, 77.8204, 75.4104, 0.0 ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("hitbox/CollisionShape2D:position")
+tracks/11/path = NodePath("hurtbox/CollisionShape2D:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -542,7 +542,7 @@ tracks/11/keys = {
 "values": [ Vector2( 100.794, 70.5556 ), Vector2( 104.097, 56.8694 ), Vector2( 141.38, 94.1525 ), Vector2( 153.462, 98.8718 ), Vector2( 217.457, 151.414 ), Vector2( 209.056, 166.123 ), Vector2( 193.734, 154.088 ), Vector2( 100.794, 70.5556 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "taunt"
 length = 1.265
 tracks/0/type = "value"
@@ -594,7 +594,7 @@ tracks/3/keys = {
 "values": [ -36.9, -36.9, -110.792, -45.7342, -36.9, -36.9 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("hitbox/CollisionShape2D:position")
+tracks/4/path = NodePath("hurtbox/CollisionShape2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -606,7 +606,7 @@ tracks/4/keys = {
 "values": [ Vector2( 100.794, 70.5556 ), Vector2( 189.518, 150.785 ), Vector2( 189.518, 150.785 ), Vector2( 100.794, 70.5556 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("hitbox/CollisionShape2D:rotation_degrees")
+tracks/5/path = NodePath("hurtbox/CollisionShape2D:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -618,8 +618,7 @@ tracks/5/keys = {
 "values": [ 0.0, 89.4915, 89.4915, 0.0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "walk"
+[sub_resource type="Animation" id=5]
 length = 0.862
 tracks/0/type = "value"
 tracks/0/path = NodePath("Skeleton2D/Torso/FootL:rotation_degrees")
@@ -730,8 +729,14 @@ tracks/8/keys = {
 "values": [ Vector2( -2.06927, -65.7272 ), Vector2( 0.0496864, -53.0136 ), Vector2( 0.261552, -52.8018 ), Vector2( -2.06927, -65.7272 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 38.8848, 111.229 )
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends RigidBody2D
+
+export var damage = 5
+"
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 40.5366, 42.771 )
@@ -852,7 +857,6 @@ rest = Transform2D( 1, 0, 0, 1, -37.304, 165.883 )
 [node name="PawL" type="Bone2D" parent="Skeleton2D/Torso/ArmL/ForearmL"]
 position = Vector2( -15.669, -183.867 )
 rotation = -3.59055
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.932324, 0.361625, -0.361625, -0.932324, -15.669, -183.867 )
 default_length = 61.0
 
@@ -867,7 +871,6 @@ rest = Transform2D( 1, 0, 0, 1, -29.3669, 182.551 )
 [node name="PawR" type="Bone2D" parent="Skeleton2D/Torso/ArmR/ForearmR"]
 position = Vector2( -47.1538, -145.313 )
 rotation = -3.71456
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.911403, 0.411514, -0.411514, -0.911403, -47.1538, -145.313 )
 default_length = 59.0
 
@@ -882,14 +885,12 @@ rest = Transform2D( 1, 0, 0, 1, -2.06927, -65.7272 )
 [node name="EarL" type="Bone2D" parent="Skeleton2D/Torso/Neck/Head"]
 position = Vector2( 85.0428, -106.7 )
 rotation = -1.24267
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.322266, -0.946649, 0.946649, 0.322266, 85.0428, -106.7 )
 default_length = 70.0
 
 [node name="EarR" type="Bone2D" parent="Skeleton2D/Torso/Neck/Head"]
 position = Vector2( -57.4189, -153.046 )
 rotation = -1.26885
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.297375, -0.954761, 0.954761, 0.297375, -57.4189, -153.046 )
 default_length = 60.0
 
@@ -909,33 +910,36 @@ default_length = 66.0
 [node name="FootL" type="Bone2D" parent="Skeleton2D/Torso"]
 position = Vector2( 90.6476, 0.0183792 )
 rotation = 2.39634
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.734915, 0.67816, -0.67816, -0.734915, 90.6476, 0.0183792 )
 default_length = 68.0
 
 [node name="FootR" type="Bone2D" parent="Skeleton2D/Torso"]
 position = Vector2( -28.9119, 16.0835 )
 rotation = 2.99499
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.989272, 0.146083, -0.146083, -0.989272, -28.9119, 16.0835 )
 default_length = 78.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
-anims/die = SubResource( 6 )
-anims/hurt = SubResource( 4 )
-anims/taunt = SubResource( 5 )
-anims/walk = SubResource( 2 )
-
-[node name="hitbox" type="RigidBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-position = Vector2( 100.794, 70.5556 )
-shape = SubResource( 3 )
+anims/die = SubResource( 2 )
+anims/hurt = SubResource( 3 )
+anims/taunt = SubResource( 4 )
+anims/walk = SubResource( 5 )
 
 [node name="hurtbox" type="RigidBody2D" parent="."]
+mode = 3
+contacts_reported = 2
+contact_monitor = true
 
-[node name="attack" type="CollisionShape2D" parent="hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2( 100.794, 70.5556 )
+shape = SubResource( 6 )
+
+[node name="hitbox" type="RigidBody2D" parent="."]
+mode = 3
+script = SubResource( 8 )
+
+[node name="attack" type="CollisionShape2D" parent="hitbox"]
 position = Vector2( 20.6362, 58.7338 )
 shape = SubResource( 7 )
 disabled = true

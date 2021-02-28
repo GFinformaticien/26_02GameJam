@@ -59,3 +59,8 @@ func _on_Health_health_changed(health):
 		$AnimationPlayer.stop()
 		# TODO: Play the die animation
 		# $AnimationPlayer.play("roullade")
+
+
+func _on_hitbox_player_body_entered(body):
+	if(body.name == "hitbox"):
+		$Health.take_damage(body.damage)
