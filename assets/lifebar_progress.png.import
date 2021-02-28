@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CAREBLANCLOL.png-7b91d2b2582b2f17451a65eaafb22a91.stex"
+path="res://.import/lifebar_progress.png-8da9990e2aef4cf6a8c0b2d6ecd264aa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://CAREBLANCLOL.png"
-dest_files=[ "res://.import/CAREBLANCLOL.png-7b91d2b2582b2f17451a65eaafb22a91.stex" ]
+source_file="res://assets/lifebar_progress.png"
+dest_files=[ "res://.import/lifebar_progress.png-8da9990e2aef4cf6a8c0b2d6ecd264aa.stex" ]
 
 [params]
 

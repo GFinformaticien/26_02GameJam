@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lifebar_progress.png-72461c5b3529bb615c7c5f9e2828f97b.stex"
+path="res://.import/cat_demembre.png-286a0359329503c54b87cf1dd20974b5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lifebar_progress.png"
-dest_files=[ "res://.import/lifebar_progress.png-72461c5b3529bb615c7c5f9e2828f97b.stex" ]
+source_file="res://assets/cat_demembre.png"
+dest_files=[ "res://.import/cat_demembre.png-286a0359329503c54b87cf1dd20974b5.stex" ]
 
 [params]
 

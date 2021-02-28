@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lifebar_over.png-a174eb21ceefddcc049bf231268ccddd.stex"
+path="res://.import/hplabel.png-1280ee8bd985aad50bc0e71f0f2e7b2d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lifebar_over.png"
-dest_files=[ "res://.import/lifebar_over.png-a174eb21ceefddcc049bf231268ccddd.stex" ]
+source_file="res://assets/hplabel.png"
+dest_files=[ "res://.import/hplabel.png-1280ee8bd985aad50bc0e71f0f2e7b2d.stex" ]
 
 [params]
 

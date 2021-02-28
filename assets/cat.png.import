@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hplabel.png-fb3c5ea2ccb0ac16cbdfd90d295dfcbf.stex"
+path="res://.import/cat.png-74418c656f64bad1813a4e0137c5108d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hplabel.png"
-dest_files=[ "res://.import/hplabel.png-fb3c5ea2ccb0ac16cbdfd90d295dfcbf.stex" ]
+source_file="res://assets/cat.png"
+dest_files=[ "res://.import/cat.png-74418c656f64bad1813a4e0137c5108d.stex" ]
 
 [params]
 

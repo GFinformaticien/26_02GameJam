@@ -71,3 +71,5 @@ func _physics_process(delta):
 				position.x += speed * delta * 2.8
 			else:
 				position.x -= speed * delta * 2.8
+	
+	
