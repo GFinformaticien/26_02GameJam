@@ -444,16 +444,16 @@ tracks/5/keys = {
 "values": [ Vector2( 130.864, -262.669 ) ]
 }
 
-[sub_resource type="GDScript" id=9]
+[sub_resource type="GDScript" id=7]
 script/source = "extends RigidBody2D
 
 export var damage = 10
 "
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=8]
 radius = 170.0
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 60, 60 )
 
 [node name="ia" type="Node2D"]
@@ -569,14 +569,14 @@ anims/taunt = SubResource( 6 )
 
 [node name="hitbox" type="RigidBody2D" parent="."]
 mode = 3
-script = SubResource( 9 )
+script = SubResource( 7 )
 
 [node name="spebox" type="CollisionShape2D" parent="hitbox"]
 position = Vector2( -1, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 disabled = true
 
 [node name="attackbox" type="CollisionShape2D" parent="hitbox"]
 position = Vector2( 75.755, -67.994 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 disabled = true

@@ -63,6 +63,7 @@ func testFlip():
 		fliping = true
 		if($AnimationPlayer.is_playing()):
 			yield($AnimationPlayer, "animation_finished")
+		inAction = false
 		state = "fliping"
 		self.scale.x = newscale
 		self.position.x -= newscale * 130
