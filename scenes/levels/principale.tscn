@@ -42,7 +42,7 @@ z_index = -2
 texture = ExtResource( 3 )
 
 [node name="Cat" parent="." instance=ExtResource( 7 )]
-position = Vector2( 390, 392 )
+position = Vector2( 388.318, 465.999 )
 
 [node name="Puggu" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1255.11, 459.143 )

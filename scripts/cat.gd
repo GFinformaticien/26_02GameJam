@@ -68,7 +68,6 @@ func testFlip():
 		inAction = false
 		state = "fliping"
 		self.scale.x = newscale
-		self.global_position.x += 472.533*newscale
 		yield(get_tree().create_timer(0.5), "timeout")
 		fliping = false
 		state = randomAttack()
@@ -107,15 +106,12 @@ func toward_player():
 	else:
 		#print("move")
 		$AnimationPlayer.play("walk")
-		var scale_before = self.scale.x
 		if(self.global_position.x-other.global_position.x<0):
 			self.scale.x = - 1
 			move = 1
 		else:
 			self.scale.x = 1
 			move = -1
-		if(scale_before != self.scale.x):
-			self.global_position.x -= self.scale.x * 130
 		self.global_position.x+=move
 		#print("moving",self.global_position.x)
 		
