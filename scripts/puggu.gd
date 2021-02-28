@@ -49,8 +49,6 @@ func _process(delta):
 			if(timel - previoustimeflip > 1.5):
 				previoustimeflip = timel
 				testFlip()
-	else:
-		queue_free()
 			
 #	pass
 func testFlip():
@@ -127,7 +125,7 @@ func taunt():
 		if(tmp=="taunt"):
 			cd = 0.1
 		#inAction = cooldown(cd)# time attack = 1
-		yield($AnimationPlayer, "animation_finished")
+		#yield($AnimationPlayer, "animation_finished")
 		yield(get_tree().create_timer(cd), "timeout")
 		
 		inAction = false
@@ -147,8 +145,9 @@ func takehit(hitvalue):
 		state = "waiting"
 	else:
 		#$AnimationPlayer.play("Die")
-		#yield($AnimationPlayer, "animation_finished")
 		alive = false
+		yield($AnimationPlayer, "animation_finished")
+		queue_free()
 	
 func force_action_end():
 	$AnimationPlayer.stop()
@@ -158,5 +157,5 @@ func force_action_end():
 func _on_hurtbox_body_entered(body):
 	print("something")
 	if(body.name == "hitbox"):
-		$Health.take_damage(body.damage)
+		takehit(body.damage)
 		print("puggu")
