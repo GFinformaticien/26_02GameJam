@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/objects.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Throw"
+tracks/0/type = "value"
+tracks/0/path = NodePath("IceCream:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("IceCream:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Projectile" type="Node2D"]
+
+[node name="Bone" type="Polygon2D" parent="."]
+visible = false
+offset = Vector2( -108, -75 )
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( 81.982, 8.10811, 78.0173, 55.6034, 89.6552, 75.8621, 89.6552, 96.1207, 81.8966, 115.948, 68.9655, 130.603, 75.431, 147.414, 94.8276, 159.483, 119.397, 159.914, 140.948, 151.724, 144.397, 121.983, 131.897, 105.172, 117.672, 80.6035, 121.121, 57.7586, 133.621, 47.8448, 143.103, 21.1207, 124.569, -6.46552 )
+uv = PoolVector2Array( 81.982, 8.10811, 78.0173, 55.6034, 89.6552, 75.8621, 89.6552, 96.1207, 81.8966, 115.948, 68.9655, 130.603, 75.431, 147.414, 94.8276, 159.483, 119.397, 159.914, 140.948, 151.724, 144.397, 121.983, 131.897, 105.172, 117.672, 80.6035, 121.121, 57.7586, 133.621, 47.8448, 143.103, 21.1207, 124.569, -6.46552 )
+
+[node name="IceCream" type="Polygon2D" parent="."]
+rotation = 6.28319
+offset = Vector2( -32, -75 )
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( -2.15517, 17.6724, -1.2931, 119.828, 15.9483, 134.483, 24.1379, 155.172, 43.1035, 153.448, 51.7242, 137.069, 65.0862, 124.138, 66.8103, 29.3103, 61.2069, 2.15517 )
+uv = PoolVector2Array( -2.15517, 17.6724, -1.2931, 119.828, 15.9483, 134.483, 24.1379, 155.172, 43.1035, 153.448, 51.7242, 137.069, 65.0862, 124.138, 66.8103, 29.3103, 61.2069, 2.15517 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Throw = SubResource( 1 )
