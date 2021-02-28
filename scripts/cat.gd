@@ -119,7 +119,7 @@ func taunt():
 	#print("taunt")
 	if(!inAction && !$AnimationPlayer.is_playing() && !fliping):
 		inAction = true
-		#$AnimationPlayer.play("taunt")
+		$AnimationPlayer.play("taunt")
 		#animation_player.connect("finished", animation_player, "stop")
 		var tmp = randomAttack()
 		var cd = 1.3
@@ -127,6 +127,7 @@ func taunt():
 			cd = 0.915
 		#inAction = cooldown(cd)# time attack = 1
 		yield(get_tree().create_timer(cd), "timeout")
+		
 		inAction = false
 		state = tmp
 
