@@ -138,6 +138,7 @@ func taunt():
 		if(tmp=="taunt"):
 			cd = 0.915
 		#inAction = cooldown(cd)# time attack = 1
+		yield($AnimationPlayer, "animation_finished")
 		yield(get_tree().create_timer(cd), "timeout")
 		inAction = false
 		state = tmp
