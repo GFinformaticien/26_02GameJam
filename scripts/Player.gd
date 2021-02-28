@@ -22,11 +22,13 @@ func _physics_process(delta):
 		if Input.is_action_pressed("ui_right"):
 			# Move as long as the key/button is pressed.
 			self.scale.x = 1
-			position.x += speed * delta * realspeed
+			if(position.x - speed * delta * realspeed < 10772):
+				position.x += speed * delta * realspeed
 			$AnimationPlayer.play("Walk")
 		elif Input.is_action_pressed("ui_left"):
 			self.scale.x = - 1
-			position.x -= speed * delta * realspeed
+			if(position.x - speed * delta * realspeed > 200):
+				position.x -= speed * delta * realspeed
 			$AnimationPlayer.play("Walk")
 		elif Input.is_key_pressed(KEY_1):
 			$AnimationPlayer.play("foot")
@@ -49,9 +51,11 @@ func _physics_process(delta):
 		if(actual - previous > 0.01):
 			previous = actual
 			if(self.scale.x>0):
-				position.x += speed * delta * 2.8
+				if(position.x + speed * delta * 2.8 < 10772):
+					position.x += speed * delta * 2.8
 			else:
-				position.x -= speed * delta * 2.8
+				if(position.x - speed * delta * 2.8> 200):
+					position.x -= speed * delta * 2.8
 
 func _on_Health_health_changed(health):
 	print("djozuhdoazhdoizajd")

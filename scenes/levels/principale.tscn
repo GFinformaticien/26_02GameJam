@@ -34,6 +34,9 @@ position = Vector2( -0.639282, -45.157 )
 scale = Vector2( 0.285714, 0.285714 )
 offset = Vector2( 0, -120 )
 current = true
+limit_left = 0
+limit_right = 10972
+limit_bottom = 100000000
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 5460.5, 444.956 )
