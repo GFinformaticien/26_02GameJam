@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://puggumafia.png" type="Texture" id=1]
+[ext_resource path="res://assets/puggumafia.png" type="Texture" id=1]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Test"
@@ -152,7 +152,6 @@ rest = Transform2D( 1, 0, 0, 1, -43.6535, 10.3181 )
 [node name="FootR" type="Bone2D" parent="Skeleton2D/Tronk/LegR"]
 position = Vector2( -23.811, 210.331 )
 rotation = 0.137881
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.990509, 0.137445, -0.137445, 0.990509, -23.811, 210.331 )
 default_length = 61.0
 
@@ -163,7 +162,6 @@ rest = Transform2D( 1, 0, 0, 1, 41.4126, -5.55602 )
 [node name="FootL" type="Bone2D" parent="Skeleton2D/Tronk/LegL"]
 position = Vector2( -18.2613, 201.6 )
 rotation = 0.137881
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.990509, 0.137445, -0.137445, 0.990509, -18.2613, 201.6 )
 default_length = 61.0
 

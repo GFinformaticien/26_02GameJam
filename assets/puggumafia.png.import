@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/puggumafia.png-4d6a4cc03f49f505af0afeaec240fa31.stex"
+path="res://.import/puggumafia.png-415ded691af753c03623b36f796bc777.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://puggumafia.png"
-dest_files=[ "res://.import/puggumafia.png-4d6a4cc03f49f505af0afeaec240fa31.stex" ]
+source_file="res://assets/puggumafia.png"
+dest_files=[ "res://.import/puggumafia.png-415ded691af753c03623b36f796bc777.stex" ]
 
 [params]
 
