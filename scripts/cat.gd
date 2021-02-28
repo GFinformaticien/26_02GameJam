@@ -145,6 +145,7 @@ func takehit(hitvalue):
 		$AnimationPlayer.play("die")
 		alive = false
 		yield($AnimationPlayer, "animation_finished")
+		queue_free()
 	
 func force_action_end():
 	$AnimationPlayer.stop()

@@ -36,7 +36,7 @@ offset = Vector2( 0, -120 )
 current = true
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 5455.16, 346.178 )
+position = Vector2( 5460.5, 444.956 )
 scale = Vector2( 2, 2 )
 z_index = -2
 texture = ExtResource( 3 )
