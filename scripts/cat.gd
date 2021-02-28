@@ -39,7 +39,7 @@ func _process(delta):
 		else:
 			if(timel - previoustime > 0.5):
 				previoustime = timel
-				print("cat :", state)
+				#print("cat :", state)
 				match state:
 					"attack":
 						attack()
@@ -68,7 +68,7 @@ func testFlip():
 		inAction = false
 		state = "fliping"
 		self.scale.x = newscale
-		self.position.x -= newscale * 130
+		self.global_position.x += 472.533*newscale
 		yield(get_tree().create_timer(0.5), "timeout")
 		fliping = false
 		state = randomAttack()
