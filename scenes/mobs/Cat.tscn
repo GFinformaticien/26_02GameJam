@@ -3,8 +3,6 @@
 [ext_resource path="res://assets/cat.png" type="Texture" id=1]
 [ext_resource path="res://assets/cat_demembre.png" type="Texture" id=2]
 
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "Test"
 length = 1.5
@@ -210,7 +208,6 @@ rest = Transform2D( 1, 0, 0, 1, -29.3669, 182.551 )
 [node name="PawR" type="Bone2D" parent="Skeleton2D/Torso/ArmR/ForearmR"]
 position = Vector2( -47.1538, -145.313 )
 rotation = 2.71748
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.911403, 0.411514, -0.411514, -0.911403, -47.1538, -145.313 )
 default_length = 59.0
 

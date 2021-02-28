@@ -12,19 +12,21 @@ var inAction = false
 var animation_player
 var timel
 var previoustime
+var previoustimeflip
 var healthPoint
 var alive
-var tapped
+var fliping
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	other = self.get_parent().get_child(2)
+	other = self.get_parent().get_node("UFTKA")
 	animation_player = get_node("AnimationPlayer")
 	timel = 0
 	previoustime = 0
+	previoustimeflip = 0
 	healthPoint = 5
 	alive = true
-	tapped =false
+	fliping = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -46,33 +48,66 @@ func _process(delta):
 						taunt()
 					"waiting":
 						waiting()
+			if(timel - previoustimeflip > 1.5):
+				previoustimeflip = timel
+				testFlip()
 			
 #	pass
+func testFlip():
+	var scale = self.scale.x
+	var newscale
+	if(self.global_position.x-other.global_position.x<0):
+		newscale = 1
+	else:
+		newscale = - 1
+	if(scale != newscale):
+		fliping = true
+		if($AnimationPlayer.is_playing() && state == "spe"):
+			yield(get_tree().create_timer(1.8), "timeout")
+		else:
+			yield(get_tree().create_timer(1.2), "timeout")
+		state = "fliping"
+		self.scale.x = newscale
+		yield(get_tree().create_timer(0.8), "timeout")
+		fliping = false
+		prepareNew()
+		
 func waiting():
 	#print("wait")
-	if(!inAction && !$AnimationPlayer.is_playing()):
+	if(!inAction && !$AnimationPlayer.is_playing() && !fliping):
 		if(abs(other.global_position.x-self.global_position.x) < distancewait):
 			state ="walking"
 
 func attack():
-	if(!inAction && !$AnimationPlayer.is_playing()):
+	if(!inAction && !$AnimationPlayer.is_playing() && !fliping):
 		inAction = true
 		if(abs(other.global_position.x-self.global_position.x) > distance):
 			state = "walking"
 		else:
 			$AnimationPlayer.play("attack")
 			#animation_player.connect("finished", animation_player, "stop")
-			cooldown(1.314)# real cd = 0.7 -> time attack = 0.614
+			prepareNew()
+			var cd = 1.2
+			if(state=="attack"):
+				cd = 1.0
+			#inAction = cooldown(cd)# real cd = 0.7 -> time attack = 0.614
+			yield(get_tree().create_timer(cd), "timeout")
+			inAction = false
 
 func spe_attack():
-	if(!inAction && !$AnimationPlayer.is_playing()):
+	if(!inAction && !$AnimationPlayer.is_playing() && !fliping):
 		inAction = true
 		if(abs(other.global_position.x-self.global_position.x) > distance):
 			state = "walking"
 		else:
 			$AnimationPlayer.play("spe_attack")
 			#animation_player.connect("finished", animation_player, "stop")
-			cooldown(2.89)# real cd = 0.7 -> time attack = 2.19
+			prepareNew()
+			var cd = 3
+			if(state=="spe"):
+				cd = 2.3
+			yield(get_tree().create_timer(cd), "timeout")# real cd = 0.7 -> time attack = 2.19
+			inAction = false
 
 func toward_player():
 	var move
@@ -91,32 +126,29 @@ func toward_player():
 		self.global_position.x+=move
 		
 func taunt():
-	if(!inAction && !$AnimationPlayer.is_playing()):
+	if(!inAction && !$AnimationPlayer.is_playing() && !fliping):
 		inAction = true
 		$AnimationPlayer.play("taunt")
 		#animation_player.connect("finished", animation_player, "stop")
-		cooldown(1.7)# real cd = 0.7 -> time attack = 2.19
+		prepareNew()
+		var cd = 1.3
+		if(state=="taunt"):
+			cd = 0.915
+		#inAction = cooldown(cd)# time attack = 1
+		yield(get_tree().create_timer(cd), "timeout")
+		inAction = false
 
 func randomAttack():
-	var action = randi() % 20
-	if action < 8:
+	var action = randi() % 13
+	if action < 0:
 		state = "attack"
 	else:
 		if action < 10:
 			state = "spe"
 		else: state = "taunt"
-		
-func cooldown(time):
-	var timer=Timer.new()
-	timer.set_wait_time(time)
-	add_child(timer)
-	timer.start()
-	yield(timer,"timeout")
-	timer.queue_free()
-
-func actionFinished():
+	
+func prepareNew():
 	randomAttack()
-	inAction = false
 
 func takehit(hitvalue):
 	healthPoint -= hitvalue
