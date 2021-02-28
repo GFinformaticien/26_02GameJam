@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/puggumafia.png" type="Texture" id=1]
+[ext_resource path="res://assets/hornyhammer.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Test"
@@ -39,6 +40,93 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "HornyBonk"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skeleton2D/Tronk/ArmL:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 0.0669859 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Polygons2D/ArmL:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Polygons2D/InvertedArmL:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HornyHammer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HornyHammer:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 560.204, 479.555 ), Vector2( 663.278, 447.278 ), Vector2( 766.352, 289.135 ), Vector2( 767.603, 179.076 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("HornyHammer:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 45.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Skeleton2D/Tronk/ArmL/HandL:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.5, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 90.0002, 96.1 ]
 }
 
 [node name="Puggu" type="Node2D"]
@@ -181,9 +269,19 @@ rest = Transform2D( 1, 0, 0, 1, 64.5386, -125.405 )
 
 [node name="HandL" type="Bone2D" parent="Skeleton2D/Tronk/ArmL"]
 position = Vector2( 37.3717, 176.995 )
-rotation = 1.5708
+rotation = 1.67726
 rest = Transform2D( -4.37114e-08, 1, -1, -4.37114e-08, 37.3717, 176.995 )
 default_length = 70.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Test = SubResource( 1 )
+anims/HornyBonk = SubResource( 2 )
+
+[node name="HornyHammer" type="Sprite" parent="."]
+visible = false
+position = Vector2( 767.603, 179.076 )
+rotation = 0.785398
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( 0, -559 )
