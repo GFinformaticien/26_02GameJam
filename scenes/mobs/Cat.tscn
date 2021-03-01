@@ -587,18 +587,6 @@ tracks/12/keys = {
 "update": 1,
 "values": [ true ]
 }
-tracks/13/type = "value"
-tracks/13/path = NodePath("Skeleton2D/Torso:default_length")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
-}
 
 [sub_resource type="Animation" id=7]
 length = 1.265

@@ -73,8 +73,8 @@ func _process(delta):
 						mob = puggu
 				var newMob = mob.instance()
 				newMob.get_node("Position2D").position = Vector2(0, spawnY)
-				newMob.global_position.x = mobs[1]
 				add_child(newMob)
+				newMob.global_position.x = mobs[1]
 				print(newMob.global_position.x)
 			# remove from array
 			SPAWNS.remove(i)

@@ -26,9 +26,6 @@ __meta__ = {
 
 [node name="Interface" parent="InterfaceLayer" instance=ExtResource( 6 )]
 
-[node name="mob" parent="." instance=ExtResource( 1 )]
-position = Vector2( 249.89, 715.759 )
-
 [node name="blanknode2D" parent="." instance=ExtResource( 2 )]
 position = Vector2( 849.89, 668.474 )
 
@@ -51,12 +48,6 @@ position = Vector2( 5460.5, 444.956 )
 scale = Vector2( 2, 2 )
 z_index = -2
 texture = ExtResource( 3 )
-
-[node name="Cat" parent="." instance=ExtResource( 7 )]
-position = Vector2( 438.209, 758.214 )
-
-[node name="Puggu" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1305, 751.358 )
 [connection signal="health_changed" from="UFTKA/Health" to="InterfaceLayer/Interface" method="_on_Health_health_changed"]
 
 [editable path="UFTKA"]
