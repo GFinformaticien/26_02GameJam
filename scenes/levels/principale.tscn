@@ -11,8 +11,16 @@
 
 [node name="Scene" type="Node2D"]
 script = ExtResource( 5 )
-Mob = [ ExtResource( 7 ), ExtResource( 1 ) ]
+ia = ExtResource( 1 )
+cat = ExtResource( 7 )
+puggu = ExtResource( 8 )
 enabled = true
+
+[node name="SpawnOrigin" type="Position2D" parent="."]
+position = Vector2( 559.407, 855.036 )
+__meta__ = {
+"_editor_description_": "Helper point to make the ennemies spawn in the correct position"
+}
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 
@@ -27,7 +35,7 @@ position = Vector2( 849.89, 668.474 )
 [node name="UFTKA" parent="." groups=[
 "actors",
 ] instance=ExtResource( 4 )]
-position = Vector2( 849.89, 759.193 )
+position = Vector2( 678.153, 751.336 )
 
 [node name="Main camera" type="Camera2D" parent="UFTKA"]
 position = Vector2( -0.639282, -45.157 )

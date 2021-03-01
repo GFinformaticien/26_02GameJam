@@ -24,7 +24,7 @@ func _ready():
 	timel = 0
 	previoustime = 0
 	previoustimeflip = 0
-	healthPoint = 100
+	healthPoint = 10
 	alive =true
 	fliping = false
 
@@ -141,18 +141,16 @@ func takehit(hitvalue):
 	healthPoint -= hitvalue
 	force_action_end()
 	if(healthPoint>0):
-		#$AnimationPlayer.play("takehit")
+		#$AnimationPlayer.play("TakeHit")
 		state = "waiting"
 	else:
 		#$AnimationPlayer.play("Die")
 		alive = false
-		yield($AnimationPlayer, "animation_finished")
+		#yield($AnimationPlayer, "animation_finished")
 		queue_free()
-	
+
 func force_action_end():
 	$AnimationPlayer.stop()
-	
-
 
 func _on_hurtbox_body_entered(body):
 	print("something")

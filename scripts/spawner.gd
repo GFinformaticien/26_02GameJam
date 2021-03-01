@@ -1,21 +1,47 @@
 extends Node2D
 
-export var Mob: Array
-var mobTimer = null
-var SPAWN_INTERVAL = 4
+export var ia: PackedScene
+export var cat: PackedScene
+export var puggu: PackedScene
 export var enabled: bool = false
 
-func _ready():
-	mobTimer = Timer.new()
-	mobTimer.connect("timeout", self, "_on_mob_timer")
-	add_child(mobTimer)
-	mobTimer.start(SPAWN_INTERVAL)
+var spawnY = 0
+var player: Node2D
 
-func _on_mob_timer():
-	if(enabled):
-		var playerPosition = get_node("UFTKA").transform.get_origin()
-		var x = playerPosition.x
-		var y = playerPosition.y
-		var newMob = (Mob[randi() % Mob.size()] as PackedScene).instance()
-		newMob.position = Vector2(x - 200, y)
-		add_child(newMob)
+var SPAWNS = [
+	[800, [
+		["ia",700],
+		["ia",650],
+		["ia",680],
+		["ia",1000],
+		["ia",1050]
+	]],
+]
+
+func _process(delta):
+	for i in SPAWNS.size():
+		var spawner = SPAWNS[i] as Array
+		# Activate if near 100 pixels
+		if(abs(player.transform.get_origin().x - spawner[0]) <= 100):
+			var mobsAndSpawn = spawner[1] as Array
+			# Spawn all mobs inside
+			for mobs in mobsAndSpawn:
+				var mob: PackedScene = null
+				match mobs[0] as String:
+					"ia":
+						mob = ia
+					"cat":
+						mob = cat
+					"puggu":
+						mob = puggu
+				var newMob = mob.instance()
+				newMob.get_node("Position2D").position = Vector2(mobs[1], spawnY)
+				add_child(newMob)
+			# remove from array
+			SPAWNS.remove(i)
+			return
+
+func _ready():
+	var playerPosition = get_node("SpawnOrigin").transform.get_origin()
+	spawnY = playerPosition.y
+	player = get_node("UFTKA")
