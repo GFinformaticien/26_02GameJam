@@ -141,7 +141,7 @@ func takehit(hitvalue):
 	healthPoint -= hitvalue
 	force_action_end()
 	if(healthPoint>0):
-		#$AnimationPlayer.play("TakeHit")
+		$AnimationPlayer.play("takehit")
 		state = "waiting"
 	else:
 		#$AnimationPlayer.play("Die")
