@@ -14,6 +14,9 @@ func _ready():
 func take_damage(amount):
 	health = max(0, health - amount)
 	emit_signal("health_changed", health)
+	if(health <= 0):
+		get_tree().quit()
+
 
 func heal(amount):
 	health = max(max_health, health + amount)
