@@ -15,7 +15,7 @@ func take_damage(amount):
 	health = max(0, health - amount)
 	emit_signal("health_changed", health)
 	if(health <= 0):
-		get_tree().quit()
+		get_tree().reload_current_scene()
 
 
 func heal(amount):
